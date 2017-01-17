@@ -1,8 +1,8 @@
 language: node_js
 node_js:
 - '5'
-install:
-- npm install
+# install:
+# - npm install
 script:
 - NODE_ENV=production webpack -p
 deploy:
