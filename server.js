@@ -10,9 +10,7 @@ var ordersOrdersId = require('./routers/ordersOrdersId');
 
 /* ------------------Mongoose--------------------- */
 
-var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : '
-mongodb://amituuush:Gomocha123!@ds117869.mlab.com:17869/gomocha-v2
-'
+var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://amituuush:Gomocha123!@ds117869.mlab.com:17869/gomocha-v2'
 
 mongoose.Promise = global.Promise;
 mongoose.connect(MongoURI);
