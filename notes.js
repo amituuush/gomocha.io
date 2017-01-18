@@ -14,3 +14,10 @@ const AuthSchema = new Schema({
 if (user.role === 'CoffeeShop')
 
 componentWillMount() { this.props.fetchCoffeeApi(this.props.user.id); }
+
+
+// create order history view on admin side
+// create sample coffee shops in the database that the client will fetch every time
+  // shop will display name, address, distance from user, and open/closed status
+  // think about coffee shop schema. I will input coffee shop and menu details into db => how to give admin roles access to coffee shop
+// server and client side auth with roles
