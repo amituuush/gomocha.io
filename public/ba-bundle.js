@@ -61822,7 +61822,7 @@
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    'Today\'s Orders'
+	                    'Order History'
 	                ),
 	                _react2.default.createElement(_OrdersContainer2.default, {
 	                    orders: this.props.orders,

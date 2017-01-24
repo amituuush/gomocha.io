@@ -3,14 +3,18 @@ var express = require('express');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var config = require('./config/config');
+var routes = require('./routers/routes');
 var getPrevsAndFavs = require('./routers/getPrevsAndFavs');
 var orders = require('./routers/orders');
 var ordersOrdersId = require('./routers/ordersOrdersId');
 
 
-/* ------------------Mongoose--------------------- */
+/* ------------------DATABASE--------------------- 
+------------------------------------------------*/
 
-var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://amituuush:Gomocha123!@ds117869.mlab.com:17869/gomocha-v2'
+var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : config.MONGO_URL;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(MongoURI);
@@ -24,30 +28,18 @@ mongoose.connection.on('error', function(err) {
 });
 
 
-/* -----------------Express------------------------ */
-
-function customerRequestHandler(req, res) {
-    res.sendFile(__dirname + '/public/customer.html');
-}
-
-function BARequestHandler(req, res) {
-    res.sendFile(__dirname + '/public/business-admin.html');
-}
+/* ------------------MIDDLEWARE--------------------- 
+------------------------------------------------*/
 
 app.use(express.static(__dirname + '/public'));
-
+app.use(bodyParser.json());
 app.use('/api', getPrevsAndFavs);
 app.use('/api', orders);
 app.use('/api', ordersOrdersId);
-
-app.get('/admin', BARequestHandler)
-app.get('/', customerRequestHandler);
-app.get('/*', (req, res) => {
-  res.redirect('/');
-})
+routes(app);
 
 var log = function() {
-    console.log('app listening on port 3333');
+    console.log('app listening on port ' + config.PORT);
 }
 
-app.listen(process.env.PORT || 3333, log);
+app.listen(config.PORT, log);
