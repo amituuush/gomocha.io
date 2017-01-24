@@ -26,12 +26,12 @@ mongoose.connection.on('error', function(err) {
 
 /* -----------------Express------------------------ */
 
-function customerRequestHandler(request, response) {
-    response.sendFile(__dirname + '/public/customer.html');
+function customerRequestHandler(req, res) {
+    res.sendFile(__dirname + '/public/customer.html');
 }
 
-function BARequestHandler(request, response) {
-    response.sendFile(__dirname + '/public/business-admin.html');
+function BARequestHandler(req, res) {
+    res.sendFile(__dirname + '/public/business-admin.html');
 }
 
 app.use(express.static(__dirname + '/public'));
@@ -42,6 +42,9 @@ app.use('/api', ordersOrdersId);
 
 app.get('/admin', BARequestHandler)
 app.get('/', customerRequestHandler);
+app.get('/*', (req, res) => {
+  res.redirect('/');
+})
 
 var log = function() {
     console.log('app listening on port 3333');

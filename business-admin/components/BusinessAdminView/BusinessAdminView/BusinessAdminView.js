@@ -1,6 +1,5 @@
 import React from 'react'
 import sass from './business-admin-view.scss'
-import Nav from '../Nav/Nav'
 import OrdersContainer from '../OrdersContainer/OrdersContainer'
 import { connect } from 'react-redux'
 import { fetchOrders, completeOrder } from '../../../actions/index'
@@ -25,7 +24,6 @@ var BusinessAdminView = React.createClass({
     render: function() {
             return (
                 <div className="ba-view-container">
-                    <Nav />
                     <div className='ba-view-wrap'>
                         <h1>Today's Orders</h1>
                         <OrdersContainer
