@@ -33,9 +33,8 @@ mongoose.connection.on('error', function(err) {
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use('/api', getPrevsAndFavs);
-app.use('/api', orders);
-app.use('/api', ordersOrdersId);
+app.use('/api', [getPrevsAndFavs, orders, ordersOrdersId]);
+
 routes(app);
 
 var log = function() {

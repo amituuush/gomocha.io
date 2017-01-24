@@ -5,5 +5,5 @@ module.exports = function(app) {
   app.get('/admin', homePageController.businessAdmin)
   app.get('/*', (req, res) => {
     res.redirect('/');
-  })
+  });
 }
