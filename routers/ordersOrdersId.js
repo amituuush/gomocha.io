@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var Orders = require('../app/models/orders');
+var Orders = require('../models/orders');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 

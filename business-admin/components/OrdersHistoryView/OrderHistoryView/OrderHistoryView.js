@@ -26,7 +26,7 @@ var OrderHistoryView = React.createClass({
             return (
                 <div className="ba-view-container">
                     <div className='ba-view-wrap'>
-                        <h1>Today's Orders</h1>
+                        <h1>Order History</h1>
                         <OrdersContainer
                         orders={this.props.orders}
                         completeOrder={this.props.completeOrder} />
