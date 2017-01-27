@@ -62,11 +62,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _store = __webpack_require__(418);
+	var _store = __webpack_require__(420);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _style = __webpack_require__(435);
+	var _style = __webpack_require__(437);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -61780,11 +61780,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _orderHistoryView = __webpack_require__(437);
+	var _orderHistoryView = __webpack_require__(409);
 
 	var _orderHistoryView2 = _interopRequireDefault(_orderHistoryView);
 
-	var _OrdersContainer = __webpack_require__(409);
+	var _OrdersContainer = __webpack_require__(411);
 
 	var _OrdersContainer2 = _interopRequireDefault(_OrdersContainer);
 
@@ -61852,17 +61852,57 @@
 /* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(410);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(255)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./order-history-view.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./order-history-view.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 410 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(254)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "", ""]);
+
+	// exports
+
+
+/***/ },
+/* 411 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ordersContainer = __webpack_require__(410);
+	var _ordersContainer = __webpack_require__(412);
 
 	var _ordersContainer2 = _interopRequireDefault(_ordersContainer);
 
-	var _BAOrder = __webpack_require__(412);
+	var _BAOrder = __webpack_require__(414);
 
 	var _BAOrder2 = _interopRequireDefault(_BAOrder);
 
@@ -61922,13 +61962,13 @@
 	module.exports = OrdersContainer;
 
 /***/ },
-/* 410 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(411);
+	var content = __webpack_require__(413);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(255)(content, {});
@@ -61948,7 +61988,7 @@
 	}
 
 /***/ },
-/* 411 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(254)();
@@ -61962,7 +62002,7 @@
 
 
 /***/ },
-/* 412 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61971,11 +62011,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _baOrder = __webpack_require__(413);
+	var _baOrder = __webpack_require__(415);
 
 	var _baOrder2 = _interopRequireDefault(_baOrder);
 
-	var _BAOrderDetails = __webpack_require__(415);
+	var _BAOrderDetails = __webpack_require__(417);
 
 	var _BAOrderDetails2 = _interopRequireDefault(_BAOrderDetails);
 
@@ -62068,13 +62108,13 @@
 	module.exports = BAOrder;
 
 /***/ },
-/* 413 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(414);
+	var content = __webpack_require__(416);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(255)(content, {});
@@ -62094,7 +62134,7 @@
 	}
 
 /***/ },
-/* 414 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(254)();
@@ -62108,7 +62148,7 @@
 
 
 /***/ },
-/* 415 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62117,7 +62157,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _baOrderDetails = __webpack_require__(416);
+	var _baOrderDetails = __webpack_require__(418);
 
 	var _baOrderDetails2 = _interopRequireDefault(_baOrderDetails);
 
@@ -62205,13 +62245,13 @@
 	module.exports = BAOrderDetails;
 
 /***/ },
-/* 416 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(417);
+	var content = __webpack_require__(419);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(255)(content, {});
@@ -62231,7 +62271,7 @@
 	}
 
 /***/ },
-/* 417 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(254)();
@@ -62245,26 +62285,26 @@
 
 
 /***/ },
-/* 418 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _redux = __webpack_require__(166);
 
-	var _reducers = __webpack_require__(419);
+	var _reducers = __webpack_require__(421);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _reduxLogger = __webpack_require__(421);
+	var _reduxLogger = __webpack_require__(423);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reduxPromise = __webpack_require__(427);
+	var _reduxPromise = __webpack_require__(429);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reduxThunk = __webpack_require__(434);
+	var _reduxThunk = __webpack_require__(436);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -62284,14 +62324,14 @@
 	module.exports = store;
 
 /***/ },
-/* 419 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _redux = __webpack_require__(166);
 
-	var _orderReducer = __webpack_require__(420);
+	var _orderReducer = __webpack_require__(422);
 
 	var rootReducer = (0, _redux.combineReducers)({
 	    orders: _orderReducer.orderReducer
@@ -62300,7 +62340,7 @@
 	module.exports = rootReducer;
 
 /***/ },
-/* 420 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62332,7 +62372,7 @@
 	module.exports = { orderReducer: orderReducer };
 
 /***/ },
-/* 421 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62343,11 +62383,11 @@
 	  value: true
 	});
 
-	var _core = __webpack_require__(422);
+	var _core = __webpack_require__(424);
 
-	var _helpers = __webpack_require__(423);
+	var _helpers = __webpack_require__(425);
 
-	var _defaults = __webpack_require__(426);
+	var _defaults = __webpack_require__(428);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -62450,7 +62490,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 422 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62460,9 +62500,9 @@
 	});
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(423);
+	var _helpers = __webpack_require__(425);
 
-	var _diff = __webpack_require__(424);
+	var _diff = __webpack_require__(426);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -62591,7 +62631,7 @@
 	}
 
 /***/ },
-/* 423 */
+/* 425 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62615,7 +62655,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 424 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62625,7 +62665,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(425);
+	var _deepDiff = __webpack_require__(427);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -62711,7 +62751,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 425 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -63140,7 +63180,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 426 */
+/* 428 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63191,7 +63231,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 427 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63202,7 +63242,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(428);
+	var _fluxStandardAction = __webpack_require__(430);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -63229,7 +63269,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 428 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63240,7 +63280,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(429);
+	var _lodashIsplainobject = __webpack_require__(431);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -63259,7 +63299,7 @@
 	}
 
 /***/ },
-/* 429 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -63270,9 +63310,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(430),
-	    isArguments = __webpack_require__(431),
-	    keysIn = __webpack_require__(432);
+	var baseFor = __webpack_require__(432),
+	    isArguments = __webpack_require__(433),
+	    keysIn = __webpack_require__(434);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -63368,7 +63408,7 @@
 
 
 /***/ },
-/* 430 */
+/* 432 */
 /***/ function(module, exports) {
 
 	/**
@@ -63422,7 +63462,7 @@
 
 
 /***/ },
-/* 431 */
+/* 433 */
 /***/ function(module, exports) {
 
 	/**
@@ -63657,7 +63697,7 @@
 
 
 /***/ },
-/* 432 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -63668,8 +63708,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(431),
-	    isArray = __webpack_require__(433);
+	var isArguments = __webpack_require__(433),
+	    isArray = __webpack_require__(435);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -63795,7 +63835,7 @@
 
 
 /***/ },
-/* 433 */
+/* 435 */
 /***/ function(module, exports) {
 
 	/**
@@ -63981,7 +64021,7 @@
 
 
 /***/ },
-/* 434 */
+/* 436 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -64009,13 +64049,13 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 435 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(436);
+	var content = __webpack_require__(438);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(255)(content, {});
@@ -64035,7 +64075,7 @@
 	}
 
 /***/ },
-/* 436 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(254)();
@@ -64044,46 +64084,6 @@
 
 	// module
 	exports.push([module.id, "body {\n  font-weight: 300;\n  background: #efefef; }\n\nh1 {\n  text-align: center;\n  font-weight: 300; }\n\nh2 {\n  font-weight: 300;\n  margin: 0;\n  padding-bottom: 0.75em; }\n\ninput:focus,\nselect:focus,\ntextarea:focus,\nbutton:focus {\n  outline: none; }\n\n/* ------- NORMALIZE CSS ----------*/\nhtml {\n  font-family: 'Lato', sans-serif;\n  /* 1 */\n  font-size: 16px !important;\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent displaying `audio` without controls in Mobile Safari 4/5/6/7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address inconsistent styling of `abbr[title]`.\n * 1. Correct styling in Firefox 39 and Opera 12.\n * 2. Correct missing styling in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Address inconsistent styling of b and strong.\n * 1. Correct duplicate application of `bolder` in Safari 6.0.2.\n * 2. Correct style set to `bold` in Edge 12+, Safari 6.2+, and Chrome 18+.\n */\nb,\nstrong {\n  font-weight: inherit;\n  /* 1 */ }\n\nb,\nstrong {\n  font-weight: bolder;\n  /* 2 */ }\n\n/**\n * Address styling not present in Android < 4.4.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Correct border-style given when inside `a` element in IE 8/9/10.\n */\nimg {\n  border-style: none; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address inconsistent styling of `hr`.\n * 1. Correct `box-sizing` set to `border-box` in Firefox.\n * 2. Correct `overflow` set to `hidden` in IE 8/9/10/11 and Edge 12.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * 1. Correct inheritance and scaling of font-size for preformatted text.\n * 2. Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct font properties not being inherited.\n * 2. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Restore focus style in Firefox 4+ (unset by a rule above)\n */\nbutton:-moz-focusring,\ninput:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * Address `appearance` set to `searchfield` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited from fieldset in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  color: inherit;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Restore font weight (unset by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 437 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(438);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(255)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./order-history-view.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./order-history-view.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 438 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(254)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "", ""]);
 
 	// exports
 

@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
-var Orders = require('../models/orders');
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
+const express = require('express');
+const app = express();
+const Orders = require('../models/orders');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 app.patch('/orders/:order_id', jsonParser, function(req, res) {
     Orders.findByIdAndUpdate(req.params.order_id, {completed: true}, function(err, order) {

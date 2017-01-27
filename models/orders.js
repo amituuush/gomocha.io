@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var orderSchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
     username: String,
     items: Array,
     specialInstructions: String,
@@ -17,6 +17,6 @@ var orderSchema = mongoose.Schema({
     completed: Boolean
 });
 
-var Orders = mongoose.model('Order', orderSchema);
+const Orders = mongoose.model('Order', orderSchema);
 
 module.exports = Orders;

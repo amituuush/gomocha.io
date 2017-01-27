@@ -1,6 +1,6 @@
-var express = require('express');
-var app = express();
-var read = require('../methods/read');
+const express = require('express');
+const app = express();
+const read = require('../methods/read');
 
 
 app.get('/users/:username/orders/previous', function(req, res) {
