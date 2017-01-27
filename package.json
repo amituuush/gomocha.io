@@ -16,6 +16,8 @@
     "mongodb": "^2.1.18",
     "mongoose": "^4.4.14",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
     "react": "^0.14.7",
     "react-countdown-timer": "^1.0.3",
     "react-dom": "^0.14.7",
