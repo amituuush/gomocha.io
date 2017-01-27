@@ -1,3 +1,4 @@
+var Authentication = require('../controllers/authentication');
 var homePageController = require('../controllers/homePage_controller');
 
 module.exports = function(app) {
@@ -6,4 +7,6 @@ module.exports = function(app) {
   app.get('/*', (req, res) => {
     res.redirect('/');
   });
+
+  app.post('/signup', Authentication.signup);
 }
