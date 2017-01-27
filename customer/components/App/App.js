@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router'
+import request from 'superagent'
+import cookie from 'js-cookie'
+import moment from 'moment'
+import _ from 'lodash'
 import dummyData from '../../../dummy-data.json'
 import sass from './app.scss'
 import AddItemNotification from '../CustomOrderView/AddItemNotification/AddItemNotification'
 import UsernameView from '../UsernameView/UsernameView/UsernameView'
-import _ from 'lodash'
 import api from '../../api'
-import request from 'superagent'
-import cookie from 'js-cookie'
-import moment from 'moment'
+
 
 var App = React.createClass({
 

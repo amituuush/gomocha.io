@@ -28,7 +28,6 @@ var CustomOrderView = React.createClass({
     },
 
     render: function() {
-
         var nextButton;
         if (this.props.items.length > 0) {
             nextButton = <Link to="/additional-info">

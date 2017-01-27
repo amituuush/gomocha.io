@@ -19,7 +19,7 @@ var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI :
 mongoose.Promise = global.Promise;
 mongoose.connect(MongoURI);
 
-mongoose.connection.once('open', function() {
+mongoose.connection.once('open', function () {
     console.log('connection established!');
 });
 
