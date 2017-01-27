@@ -21,3 +21,7 @@ componentWillMount() { this.props.fetchCoffeeApi(this.props.user.id); }
   // shop will display name, address, distance from user, and open/closed status
   // think about coffee shop schema. I will input coffee shop and menu details into db => how to give admin roles access to coffee shop
 // server and client side auth with roles
+
+
+// add tipping option
+// create test for geolocation
