@@ -25,3 +25,5 @@ componentWillMount() { this.props.fetchCoffeeApi(this.props.user.id); }
 
 // add tipping option
 // create test for geolocation
+// fix order summary in general and on mobile
+// place next button at bottom fixed for mobile
