@@ -1,4 +1,4 @@
-var User = require('../models/user');
+const User = require('../models/user');
 
 exports.signup = function(req, res, next) {
   // see if a user with a given email exists

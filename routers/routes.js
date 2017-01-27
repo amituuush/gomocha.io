@@ -1,5 +1,5 @@
-var Authentication = require('../controllers/authentication');
-var homePageController = require('../controllers/homePage_controller');
+const Authentication = require('../controllers/authentication');
+const homePageController = require('../controllers/homePage_controller');
 
 module.exports = function(app) {
   app.get('/', homePageController.customer);

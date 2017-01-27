@@ -1,21 +1,21 @@
-var http = require('http');
-var express = require('express');
-var app = express();
-var MongoClient = require('mongodb').MongoClient;
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var config = require('./config/config');
-var routes = require('./routers/routes');
-var getPrevsAndFavs = require('./routers/getPrevsAndFavs');
-var orders = require('./routers/orders');
-var ordersOrdersId = require('./routers/ordersOrdersId');
+const http = require('http');
+const express = require('express');
+const app = express();
+const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const config = require('./config/config');
+const routes = require('./routers/routes');
+const getPrevsAndFavs = require('./routers/getPrevsAndFavs');
+const orders = require('./routers/orders');
+const ordersOrdersId = require('./routers/ordersOrdersId');
 
 
 /* ------------------DATABASE--------------------- 
 ------------------------------------------------*/
 
-var MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : config.MONGO_URL;
+const MongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : config.MONGO_URL;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(MongoURI);
@@ -37,7 +37,7 @@ app.use('/api', [getPrevsAndFavs, orders, ordersOrdersId]);
 
 routes(app);
 
-var log = function() {
+const log = function() {
     console.log('app listening on port ' + config.PORT);
 }
 

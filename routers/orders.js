@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var Orders = require('../models/orders');
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-var create = require('../methods/create');
-var read = require('../methods/read');
+const express = require('express');
+const app = express();
+const Orders = require('../models/orders');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+const create = require('../methods/create');
+const read = require('../methods/read');
 
 app.get('/orders', function(req,res) {
     read({}, function(err, listOfOrders) {
