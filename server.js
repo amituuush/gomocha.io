@@ -4,6 +4,7 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var config = require('./config/config');
 var routes = require('./routers/routes');
 var getPrevsAndFavs = require('./routers/getPrevsAndFavs');
@@ -29,9 +30,9 @@ mongoose.connection.on('error', function(err) {
 
 /* ------------------MIDDLEWARE--------------------- 
 ------------------------------------------------*/
-
+app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: '*/*' }));
 app.use('/api', [getPrevsAndFavs, orders, ordersOrdersId]);
 
 routes(app);
