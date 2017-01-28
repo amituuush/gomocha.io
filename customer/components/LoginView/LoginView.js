@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
-class Login extends Component {
+class LoginView extends Component {
   handleFormSubmit({ email, password }) {
     console.log(email, password);
+    // Need to do something to log user in
   }
 
   render() {
@@ -28,4 +29,4 @@ class Login extends Component {
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password']
-})(Login);
+})(LoginView);
