@@ -78174,24 +78174,14 @@
 	          'form',
 	          { onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
 	          _react2.default.createElement(
-	            'fieldset',
+	            'div',
 	            null,
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'Email:'
-	            ),
-	            _react2.default.createElement('input', email)
+	            _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
 	          ),
 	          _react2.default.createElement(
-	            'fieldset',
+	            'div',
 	            null,
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'Password:'
-	            ),
-	            _react2.default.createElement('input', password)
+	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
 	          ),
 	          _react2.default.createElement(
 	            'button',
