@@ -1,14 +1,19 @@
-import sass from './style.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Routes from './routes'
 import { Router, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import Routes from './routes'
+import sass from './style.scss'
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-    <Router
-        routes={Routes}
-        history={browserHistory}
-        onUpdate={() => window.scrollTo(0, 0)} ></Router>
-
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <Router
+            routes={Routes}
+            history={browserHistory}
+            onUpdate={() => window.scrollTo(0, 0)} ></Router>
+    </Provider>
     ,document.getElementById('root')
 )
