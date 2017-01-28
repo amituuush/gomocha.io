@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 import config from '../../config/config';
 
 const ROOT_URL = config.ROOT_URL;
@@ -10,12 +11,18 @@ export function loginUser({ email, password }) {
     email: email,
     password: password
   })
+    .then(response => {
   // If request is good:
   //    -update state to indicate user is authenticated
   //    - save JWT token
   //    - redirect to the route '/dashboard'
+      browserHistory.push('/admin-dash');
+    })
+    .catch(() => {
+    // if request is bad:
+    //    -show an error to the user
+    })
 
-  // if request is bad:
-  //    -show an error to the user
+
   }
 }

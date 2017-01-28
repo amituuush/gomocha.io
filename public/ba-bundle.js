@@ -38039,6 +38039,8 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _reactRouter = __webpack_require__(197);
+
 	var _config = __webpack_require__(491);
 
 	var _config2 = _interopRequireDefault(_config);
@@ -38056,14 +38058,16 @@
 	    _axios2.default.post(ROOT_URL + '/login', {
 	      email: email,
 	      password: password
+	    }).then(function (response) {
+	      // If request is good:
+	      //    -update state to indicate user is authenticated
+	      //    - save JWT token
+	      //    - redirect to the route '/dashboard'
+	      _reactRouter.browserHistory.push('/admin-dash');
+	    }).catch(function () {
+	      // if request is bad:
+	      //    -show an error to the user
 	    });
-	    // If request is good:
-	    //    -update state to indicate user is authenticated
-	    //    - save JWT token
-	    //    - redirect to the route '/dashboard'
-
-	    // if request is bad:
-	    //    -show an error to the user
 	  };
 	}
 
