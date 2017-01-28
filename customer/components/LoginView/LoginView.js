@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './login-view.scss';
-import * as actions from '../../actions/index';
+import * as actions from '../../actions';
 
 class LoginView extends Component {
   handleFormSubmit({ email, password }) {
