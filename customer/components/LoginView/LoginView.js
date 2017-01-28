@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import './login-view.scss'
 
 class LoginView extends Component {
   handleFormSubmit({ email, password }) {
@@ -11,17 +12,19 @@ class LoginView extends Component {
     const { handleSubmit, fields: { email, password }} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset>
-          <label>Email:</label>
-          <input {...email} />
-        </fieldset>
-        <fieldset>
-          <label>Password:</label>
-          <input {...password} />
-        </fieldset>
-        <button type="submit">Log in</button>
-      </form>
+      <div className="login-view-container">
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <fieldset>
+            <label>Email:</label>
+            <input {...email} />
+          </fieldset>
+          <fieldset>
+            <label>Password:</label>
+            <input {...password} />
+          </fieldset>
+          <button type="submit">Log in</button>
+        </form>
+      </div>
     );
   }
 }

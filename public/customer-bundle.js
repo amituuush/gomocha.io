@@ -27599,12 +27599,17 @@
 
 	var _UsernameView2 = _interopRequireDefault(_UsernameView);
 
+	var _LoginView = __webpack_require__(688);
+
+	var _LoginView2 = _interopRequireDefault(_LoginView);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = _react2.default.createElement(
 	              _reactRouter.Route,
 	              { path: '/', component: _App2.default },
 	              _react2.default.createElement(_reactRouter.IndexRoute, { component: _UsernameView2.default }),
+	              _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _LoginView2.default }),
 	              _react2.default.createElement(_reactRouter.Route, { path: '/dashboard', component: _DashboardView2.default }),
 	              _react2.default.createElement(_reactRouter.Route, { path: '/select-shop', component: _SelectShopView2.default }),
 	              _react2.default.createElement(_reactRouter.Route, { path: '/custom-order', component: _CustomOrderView2.default }),
@@ -63896,9 +63901,13 @@
 	        'ul',
 	        null,
 	        React.createElement(
-	          'li',
-	          null,
-	          'Log in'
+	          Link,
+	          { to: '/login' },
+	          React.createElement(
+	            'li',
+	            null,
+	            'Log in'
+	          )
 	        )
 	      )
 	    );
@@ -78101,6 +78110,146 @@
 	};
 
 	exports.default = propTypes;
+
+/***/ },
+/* 688 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(490);
+
+	__webpack_require__(689);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LoginView = function (_Component) {
+	  _inherits(LoginView, _Component);
+
+	  function LoginView() {
+	    _classCallCheck(this, LoginView);
+
+	    return _possibleConstructorReturn(this, (LoginView.__proto__ || Object.getPrototypeOf(LoginView)).apply(this, arguments));
+	  }
+
+	  _createClass(LoginView, [{
+	    key: 'handleFormSubmit',
+	    value: function handleFormSubmit(_ref) {
+	      var email = _ref.email,
+	          password = _ref.password;
+
+	      console.log(email, password);
+	      // Need to do something to log user in
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          handleSubmit = _props.handleSubmit,
+	          _props$fields = _props.fields,
+	          email = _props$fields.email,
+	          password = _props$fields.password;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'login-view-container' },
+	        _react2.default.createElement(
+	          'form',
+	          { onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
+	          _react2.default.createElement(
+	            'fieldset',
+	            null,
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Email:'
+	            ),
+	            _react2.default.createElement('input', email)
+	          ),
+	          _react2.default.createElement(
+	            'fieldset',
+	            null,
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Password:'
+	            ),
+	            _react2.default.createElement('input', password)
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit' },
+	            'Log in'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LoginView;
+	}(_react.Component);
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	  form: 'login',
+	  fields: ['email', 'password']
+	})(LoginView);
+
+/***/ },
+/* 689 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(690);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(382)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./login-view.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./login-view.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 690 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(381)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".login-view-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);

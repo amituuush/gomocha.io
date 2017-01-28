@@ -8,7 +8,7 @@ var Navbar = React.createClass({
     return (
       <nav className="top-nav">
         <ul>
-          <li>Log in</li>
+          <Link to="/login"><li>Log in</li></Link>
         </ul>
       </nav>
     );
