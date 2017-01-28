@@ -31,8 +31,8 @@ var UsernameView = React.createClass({
                     <div className="title-cover-left"></div>
                     <div className="title-cover-right">
                         <div className="title-cover-right-child">
-                            <h1>The fastest way to your morning coffee.</h1>
-                            <form onSubmit={this._handleUsernameSubmit}>
+                            <h1>Skip the morning coffee line. Order on your phone.</h1>
+                            <form>
                                 <input
                                     type="text"
                                     placeholder="What's your name?"

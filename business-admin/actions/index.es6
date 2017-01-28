@@ -1,8 +1,5 @@
-import axios from 'axios'
-
-export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
-export const FETCH_ORDERS_ERROR = 'FETCH_ORDERS_ERROR';
-export const COMPLETE_ORDER = 'COMPLETE_ORDER';
+import axios from 'axios';
+import { FETCH_ORDERS_ERROR, FETCH_ORDERS_SUCCESS, COMPLETE_ORDER } from './types';
 
 export const fetchOrders = () => {
   return function(dispatch) {

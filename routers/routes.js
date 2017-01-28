@@ -8,7 +8,7 @@ const requireLogin = passport.authenticate('local', { session: false })
 
 module.exports = function(app) {
   app.get('/', homePageController.customer);
-  app.get('/admin', homePageController.businessAdmin);
+  app.get('/admin-login', homePageController.businessAdmin);
 
   app.post('/signup', Authentication.signup);
   app.post('/login', requireLogin, Authentication.login);
@@ -18,7 +18,7 @@ module.exports = function(app) {
   });
 
 
-  app.get('/*', (req, res) => {
-    res.redirect('/');
-  });
+  // app.get('/*', (req, res) => {
+  //   res.redirect('/');
+  // });
 }
