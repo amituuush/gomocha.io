@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import './login-view.scss'
+import './login-view.scss';
+import * as actions from '../../actions/index';
 
 class LoginView extends Component {
   handleFormSubmit({ email, password }) {
     console.log(email, password);
     // Need to do something to log user in
+    this.props.loginUser({ email, password });
   }
 
   render() {
@@ -16,11 +18,9 @@ class LoginView extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <div>
             <Field name="email" component="input" type="email" placeholder="Email"/>
-
           </div>
           <div>
             <Field name="password" component="input" type="password" placeholder="Password"/>
-
           </div>
           <button type="submit">Log in</button>
         </form>
@@ -32,4 +32,4 @@ class LoginView extends Component {
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password']
-})(LoginView);
+}, null, actions)(LoginView);

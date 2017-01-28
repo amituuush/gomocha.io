@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import './admin-login-view.scss'
+import './admin-login-view.scss';
+import * as actions from '../../actions/auth';
 
 class AdminLoginView extends Component {
   handleFormSubmit({ email, password }) {
     console.log(email, password);
     // Need to do something to log user in
+    this.props.loginUser({ email, password });
   }
 
   render() {
@@ -31,4 +33,4 @@ class AdminLoginView extends Component {
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password']
-})(AdminLoginView);
+}, null, actions)(AdminLoginView);
