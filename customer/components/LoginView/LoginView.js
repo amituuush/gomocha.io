@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import './login-view.scss';
 import * as actions from '../../actions';
 
@@ -29,7 +30,11 @@ class LoginView extends Component {
   }
 }
 
-export default reduxForm({
+LoginView = reduxForm({
   form: 'login',
   fields: ['email', 'password']
-}, null, actions)(LoginView);
+})(LoginView);
+
+LoginView = connect(null, actions)(LoginView);
+
+export default LoginView;

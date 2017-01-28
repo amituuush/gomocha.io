@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import './admin-login-view.scss';
 import * as actions from '../../actions/auth';
 
@@ -30,7 +31,11 @@ class AdminLoginView extends Component {
   }
 }
 
-export default reduxForm({
+AdminLoginView = reduxForm({
   form: 'login',
   fields: ['email', 'password']
-}, null, actions)(AdminLoginView);
+})(AdminLoginView);
+
+AdminLoginView = connect(null, actions)(AdminLoginView);
+
+export default AdminLoginView;

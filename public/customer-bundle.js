@@ -68148,6 +68148,8 @@
 
 	var _reduxForm = __webpack_require__(487);
 
+	var _reactRedux = __webpack_require__(222);
+
 	__webpack_require__(685);
 
 	var _actions = __webpack_require__(687);
@@ -68222,10 +68224,14 @@
 	  return LoginView;
 	}(_react.Component);
 
-	exports.default = (0, _reduxForm.reduxForm)({
+	LoginView = (0, _reduxForm.reduxForm)({
 	  form: 'login',
 	  fields: ['email', 'password']
-	}, null, actions)(LoginView);
+	})(LoginView);
+
+	LoginView = (0, _reactRedux.connect)(null, actions)(LoginView);
+
+	exports.default = LoginView;
 
 /***/ },
 /* 487 */

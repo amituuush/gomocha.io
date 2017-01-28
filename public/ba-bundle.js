@@ -27989,6 +27989,8 @@
 
 	var _reduxForm = __webpack_require__(265);
 
+	var _reactRedux = __webpack_require__(159);
+
 	__webpack_require__(463);
 
 	var _auth = __webpack_require__(465);
@@ -28063,10 +28065,14 @@
 	  return AdminLoginView;
 	}(_react.Component);
 
-	exports.default = (0, _reduxForm.reduxForm)({
+	AdminLoginView = (0, _reduxForm.reduxForm)({
 	  form: 'login',
 	  fields: ['email', 'password']
-	}, null, actions)(AdminLoginView);
+	})(AdminLoginView);
+
+	AdminLoginView = (0, _reactRedux.connect)(null, actions)(AdminLoginView);
+
+	exports.default = AdminLoginView;
 
 /***/ },
 /* 265 */
