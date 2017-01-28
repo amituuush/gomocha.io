@@ -12,14 +12,14 @@ import FavoriteOrdersView from './components/FavoriteOrdersView/FavoriteOrdersVi
 
 
 var Routes = <Route path="/" component={App}>
-                <IndexRoute component={DashboardView} />
-                <Route path="select-shop" component={SelectShopView} />
-                <Route path="custom-order" component={CustomOrderView} />
-                <Route path="additional-info" component={AdditionalInfoView} />
-                <Route path="order-summary" component={OrderSummaryView} />
-                <Route path="confirmation" component={ConfirmationView} />
-                <Route path="previous-orders" component={PreviousOrdersView} />
-                <Route path="favorite-orders" component={FavoriteOrdersView} />
+              <IndexRoute component={DashboardView} />
+              <Route path="/select-shop" component={SelectShopView} />
+              <Route path="/custom-order" component={CustomOrderView} />
+              <Route path="/additional-info" component={AdditionalInfoView} />
+              <Route path="/order-summary" component={OrderSummaryView} />
+              <Route path="/confirmation" component={ConfirmationView} />
+              <Route path="/previous-orders" component={PreviousOrdersView} />
+              <Route path="/favorite-orders" component={FavoriteOrdersView} />
             </Route>
 
 module.exports = Routes;
