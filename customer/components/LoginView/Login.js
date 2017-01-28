@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
 class Login extends Component {
+  handleFormSubmit({ email, password }) {
+    console.log(email, password);
+  }
+
   render() {
+    const { handleSubmit, fields: { email, password }} = this.props;
+
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset>
           <label>Email:</label>
-          <input />
+          <input {...email} />
         </fieldset>
         <fieldset>
           <label>Password:</label>
-          <input />
+          <input {...password} />
         </fieldset>
         <button type="submit">Log in</button>
       </form>
