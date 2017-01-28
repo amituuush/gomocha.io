@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import './admin-login-view.scss'
+
+class AdminLoginView extends Component {
+  handleFormSubmit({ email, password }) {
+    console.log(email, password);
+    // Need to do something to log user in
+  }
+
+  render() {
+    const { handleSubmit, fields: { email, password }} = this.props;
+
+    return (
+      <div className="login-view-container">
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <div>
+            <Field name="email" component="input" type="email" placeholder="Email"/>
+
+          </div>
+          <div>
+            <Field name="password" component="input" type="password" placeholder="Password"/>
+          </div>
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default reduxForm({
+  form: 'login',
+  fields: ['email', 'password']
+})(AdminLoginView);

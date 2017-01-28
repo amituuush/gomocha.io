@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { orderReducer } from './orderReducer';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-    orders: orderReducer
+    orders: orderReducer,
+    form: reduxFormReducer
 });
 
-module.exports = rootReducer;
+export default rootReducer;
