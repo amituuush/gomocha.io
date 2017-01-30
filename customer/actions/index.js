@@ -24,7 +24,5 @@ export function loginUser({ email, password }) {
     // if request is bad:
     //    -show an error to the user
     })
-
-
   }
 }
