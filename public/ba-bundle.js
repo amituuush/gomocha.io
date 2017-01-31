@@ -28027,6 +28027,23 @@
 	      this.props.loginUser({ email: email, password: password });
 	    }
 	  }, {
+	    key: 'renderAlert',
+	    value: function renderAlert() {
+	      if (this.props.errorMessage) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Oops!'
+	          ),
+	          ' ',
+	          this.props.errorMessage
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props,
@@ -28052,6 +28069,7 @@
 	            null,
 	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
 	          ),
+	          this.renderAlert(),
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit' },
@@ -28065,12 +28083,16 @@
 	  return AdminLoginView;
 	}(_react.Component);
 
+	function mapStateToProps(state) {
+	  return { errorMessage: state.auth.error };
+	}
+
 	AdminLoginView = (0, _reduxForm.reduxForm)({
 	  form: 'login',
 	  fields: ['email', 'password']
 	})(AdminLoginView);
 
-	AdminLoginView = (0, _reactRedux.connect)(null, actions)(AdminLoginView);
+	AdminLoginView = (0, _reactRedux.connect)(mapStateToProps, actions)(AdminLoginView);
 
 	exports.default = AdminLoginView;
 

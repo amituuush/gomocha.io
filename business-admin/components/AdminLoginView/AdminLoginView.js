@@ -11,6 +11,16 @@ class AdminLoginView extends Component {
     this.props.loginUser({ email, password });
   }
 
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+
   render() {
     const { handleSubmit, fields: { email, password }} = this.props;
 
@@ -24,6 +34,7 @@ class AdminLoginView extends Component {
           <div>
             <Field name="password" component="input" type="password" placeholder="Password"/>
           </div>
+          {this.renderAlert()}
           <button type="submit">Log in</button>
         </form>
       </div>
@@ -31,11 +42,15 @@ class AdminLoginView extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error };
+}
+
 AdminLoginView = reduxForm({
   form: 'login',
   fields: ['email', 'password']
 })(AdminLoginView);
 
-AdminLoginView = connect(null, actions)(AdminLoginView);
+AdminLoginView = connect(mapStateToProps, actions)(AdminLoginView);
 
 export default AdminLoginView;
