@@ -27580,6 +27580,10 @@
 
 	var _OrderHistoryView2 = _interopRequireDefault(_OrderHistoryView);
 
+	var _LogoutView = __webpack_require__(652);
+
+	var _LogoutView2 = _interopRequireDefault(_LogoutView);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = _react2.default.createElement(
@@ -27587,7 +27591,8 @@
 	                { path: '/admin-login', component: _App2.default },
 	                _react2.default.createElement(_reactRouter.IndexRoute, { component: _AdminLoginView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-dash', component: _BusinessAdminView2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/order-history', component: _OrderHistoryView2.default })
+	                _react2.default.createElement(_reactRouter.Route, { path: '/order-history', component: _OrderHistoryView2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _LogoutView2.default })
 	);
 
 	module.exports = Routes;
@@ -74763,6 +74768,68 @@
 
 	// exports
 
+
+/***/ },
+/* 652 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _types = __webpack_require__(492);
+
+	var actions = _interopRequireWildcard(_types);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LogoutView = function (_Component) {
+	  _inherits(LogoutView, _Component);
+
+	  function LogoutView() {
+	    _classCallCheck(this, LogoutView);
+
+	    return _possibleConstructorReturn(this, (LogoutView.__proto__ || Object.getPrototypeOf(LogoutView)).apply(this, arguments));
+	  }
+
+	  _createClass(LogoutView, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.logoutUser();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        'Sorry to see you go!'
+	      );
+	    }
+	  }]);
+
+	  return LogoutView;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(null, actions)(LogoutView);
 
 /***/ }
 /******/ ]);
