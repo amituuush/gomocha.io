@@ -3,23 +3,27 @@ import { reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
 import './signup-view.scss';
 
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+);
+
 class SignupView extends Component {
   render() {
 
-    const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
+    const { error, handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
       <div className="signup-view-container">
         <form>
-          <div>
-            <Field name="email" component="input" type="email" placeholder="Email" />
-          </div>
-          <div>
-            <Field name="password" component="input" type="password" placeholder="Password" />
-          </div>
-          <div>
-            <Field name="passwordConfirm" component="input" type="password" placeholder="Confirm password" />
-          </div>
+          <Field name="email" type="email" component={renderField} label="Email"/>
+          <Field name="password" type="password" component={renderField} label="Password"/>
+          <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
+          {error && <strong>{error}</strong>}
           <button type="submit">Sign up!</button>
         </form>
       </div>
@@ -27,9 +31,32 @@ class SignupView extends Component {
   }
 }
 
+function validate(formProps) {
+  const errors = {};
+
+  if(!formProps.email) {
+    errors.email = 'Please enter an email';
+  }
+
+   if(!formProps.password) {
+    errors.password = 'Please enter a password';
+  }
+
+   if(!formProps.passwordConfirm) {
+    errors.passwordConfirm = 'Please enter a confirm password';
+  }
+
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Passwords must match!';
+  }
+
+  return errors;
+}
+
 SignupView = reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm']
+  fields: ['email', 'password', 'passwordConfirm'],
+  validate: validate
 })(SignupView);
 
 SignupView = connect()(SignupView);
