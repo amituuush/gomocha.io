@@ -68322,7 +68322,8 @@
 	          handleSubmit = _props.handleSubmit,
 	          _props$fields = _props.fields,
 	          email = _props$fields.email,
-	          password = _props$fields.password;
+	          password = _props$fields.password,
+	          passwordConfirm = _props$fields.passwordConfirm;
 
 
 	      return _react2.default.createElement(
@@ -80146,10 +80147,36 @@
 	  _createClass(SignupView, [{
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props,
+	          handleSubmit = _props.handleSubmit,
+	          _props$fields = _props.fields,
+	          email = _props$fields.email,
+	          password = _props$fields.password,
+	          passwordConfirm = _props$fields.passwordConfirm;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'signup-view-container' },
-	        'Signup'
+	        _react2.default.createElement(
+	          'form',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(Field, { name: 'passwordConfirm', component: 'input', type: 'password', placeholder: 'Confirm password' })
+	          )
+	        )
 	      );
 	    }
 	  }]);

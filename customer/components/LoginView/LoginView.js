@@ -22,7 +22,7 @@ class LoginView extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password }} = this.props;
+    const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
       <div className="login-view-container">
