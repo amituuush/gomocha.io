@@ -17,6 +17,7 @@ export function loginUser({ email, password }) {
   //    -update state to indicate user is authenticated
       dispatch({ type: AUTH_USER });
   //    - save JWT token
+      localStorage.setItem('token', response.data.token);
   //    - redirect to the route '/dashboard'
       browserHistory.push('/dashboard');
     })

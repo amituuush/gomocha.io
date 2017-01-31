@@ -68,7 +68,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(714);
+	var _reducers = __webpack_require__(715);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -85,7 +85,7 @@
 	  { store: createStoreWithMiddleware(_reducers2.default) },
 	  _react2.default.createElement(_reactRouter.Router, {
 	    routes: _routes2.default,
-	    history: _reactRouter.browserHistory,
+	    history: _reactRouter.hashHistory,
 	    onUpdate: function onUpdate() {
 	      return window.scrollTo(0, 0);
 	    } })
@@ -78204,7 +78204,7 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _types = __webpack_require__(716);
+	var _types = __webpack_require__(714);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78224,6 +78224,7 @@
 	      //    -update state to indicate user is authenticated
 	      dispatch({ type: _types.AUTH_USER });
 	      //    - save JWT token
+	      localStorage.setItem('token', response.data.token);
 	      //    - redirect to the route '/dashboard'
 	      _reactRouter.browserHistory.push('/dashboard');
 	    }).catch(function () {
@@ -79739,6 +79740,19 @@
 
 /***/ },
 /* 714 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var SAVE_COMMENT = exports.SAVE_COMMENT = 'SAVE_COMMENT';
+	var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
+	var UNAUTH_USER = exports.UNAUTH_USER = 'UNAUTH_USER';
+
+/***/ },
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79749,7 +79763,7 @@
 
 	var _redux = __webpack_require__(231);
 
-	var _auth_reducer = __webpack_require__(719);
+	var _auth_reducer = __webpack_require__(716);
 
 	var _auth_reducer2 = _interopRequireDefault(_auth_reducer);
 
@@ -79765,18 +79779,31 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 715 */,
 /* 716 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var SAVE_COMMENT = exports.SAVE_COMMENT = 'SAVE_COMMENT';
-	var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
-	var UNAUTH_USER = exports.UNAUTH_USER = 'UNAUTH_USER';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _types.AUTH_USER:
+	      return _extends({}, state, { authenticated: true });
+	    case _types.UNAUTH_USER:
+	      return _extends({}, state, { authenticated: false });
+	  }
+	  return state;
+	};
+
+	var _types = __webpack_require__(714);
 
 /***/ },
 /* 717 */
@@ -79817,31 +79844,6 @@
 
 	// exports
 
-
-/***/ },
-/* 719 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case AUTH_USER:
-	      return _extends({}, state, { authenticated: true });
-	    case UNAUTH_USER:
-	      return _extends({}, state, { authenticated: false });
-	  }
-	  return state;
-	};
 
 /***/ }
 /******/ ]);
