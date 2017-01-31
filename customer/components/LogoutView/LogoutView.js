@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/types';
+import * as actions from '../../actions';
+import './logout-view.scss';
 
 class LogoutView extends Component {
 
@@ -9,7 +10,7 @@ class LogoutView extends Component {
   }
 
   render() {
-    return <div>Sorry to see you go!</div>;
+    return <div className="logout-view-container">Sorry to see you go!</div>;
   }
 }
 

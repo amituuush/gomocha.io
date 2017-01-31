@@ -28,8 +28,8 @@ class Navbar extends Component {
             <Link to="favorite-orders" className="fav-orders-link">
               <li onClick={() => {this.props.menuToggle()}}>Favorite Orders</li>
             </Link>
-            <Link to="/" className='router-link'>
-              <li className="sign-out" onClick={() => {this.props.menuToggle()}}>Sign Out</li>
+            <Link to="/logout" className='router-link'>
+              <li className="sign-out" onClick={() => {this.props.menuToggle()}}>Log Out</li>
             </Link>
           </ul>
         </nav>
@@ -49,7 +49,7 @@ class Navbar extends Component {
             <i className="fa fa-heart fa-2x"></i>
           </Link>
           <div className="side-nav-divider"></div>
-          <Link to="/" className='router-link'><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i></Link>
+          <Link to="/logout" className='router-link'><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i></Link>
         </nav>
       </div>
     );

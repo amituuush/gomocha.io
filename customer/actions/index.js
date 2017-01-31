@@ -41,5 +41,5 @@ export function logoutUser() {
 
   return {
     type: UNAUTH_USER,
-  };
+  }
 }
