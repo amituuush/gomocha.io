@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import { browserHistory, hashHistory } from 'react-router';
 import config from '../../config/config';
 import { AUTH_USER } from './types';
 
@@ -19,7 +19,7 @@ export function loginUser({ email, password }) {
   //    - save JWT token
       localStorage.setItem('token', response.data.token);
   //    - redirect to the route '/dashboard'
-      browserHistory.push('/#/dashboard');
+      hashHistory.push('/dashboard');
     })
     .catch(() => {
     // if request is bad:

@@ -38062,8 +38062,10 @@
 	      // If request is good:
 	      //    -update state to indicate user is authenticated
 	      //    - save JWT token
+	      localStorage.setItem('token', response.data.token);
+
 	      //    - redirect to the route '/dashboard'
-	      _reactRouter.browserHistory.push('/#/admin-dash');
+	      _reactRouter.hashHistory.push('/admin-dash');
 	    }).catch(function () {
 	      // if request is bad:
 	      //    -show an error to the user
@@ -72929,13 +72931,16 @@
 
 	var _redux = __webpack_require__(170);
 
+	var _reduxForm = __webpack_require__(265);
+
 	var _orderReducer = __webpack_require__(634);
 
-	var _reduxForm = __webpack_require__(265);
+	var _authReducer = __webpack_require__(651);
 
 	var rootReducer = (0, _redux.combineReducers)({
 	    orders: _orderReducer.orderReducer,
-	    form: _reduxForm.reducer
+	    form: _reduxForm.reducer,
+	    auth: _authReducer.authReducer
 	});
 
 	exports.default = rootReducer;
@@ -74688,6 +74693,33 @@
 
 	// exports
 
+
+/***/ },
+/* 651 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _types.AUTH_USER:
+	      return _extends({}, state, { authenticated: true });
+	    case _types.UNAUTH_USER:
+	      return _extends({}, state, { authenticated: false });
+	  }
+	  return state;
+	};
+
+	var _types = __webpack_require__(619);
 
 /***/ }
 /******/ ]);

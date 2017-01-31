@@ -78226,7 +78226,7 @@
 	      //    - save JWT token
 	      localStorage.setItem('token', response.data.token);
 	      //    - redirect to the route '/dashboard'
-	      _reactRouter.browserHistory.push('/#/dashboard');
+	      _reactRouter.hashHistory.push('/dashboard');
 	    }).catch(function () {
 	      // if request is bad:
 	      //    -show an error to the user
