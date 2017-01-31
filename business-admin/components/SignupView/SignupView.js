@@ -12,4 +12,11 @@ class SignupView extends Component {
   }
 }
 
+SignupView = reduxForm({
+  form: 'signup',
+  fields: ['email', 'password', 'passwordConfirm']
+})(SignupView);
+
+SignupView = connect()(SignupView);
+
 export default SignupView;

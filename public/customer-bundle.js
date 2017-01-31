@@ -80155,6 +80155,13 @@
 	  return SignupView;
 	}(_react.Component);
 
+	SignupView = (0, _reduxForm.reduxForm)({
+	  form: 'signup',
+	  fields: ['email', 'password', 'passwordConfirm']
+	})(SignupView);
+
+	SignupView = connect()(SignupView);
+
 	exports.default = SignupView;
 
 /***/ },
