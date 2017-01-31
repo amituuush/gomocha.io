@@ -74734,6 +74734,8 @@
 	      return _extends({}, state, { authenticated: true });
 	    case _types.UNAUTH_USER:
 	      return _extends({}, state, { authenticated: false });
+	    case _types.AUTH_ERROR:
+	      return _extends({}, state, { error: action.payload });
 	  }
 	  return state;
 	};
