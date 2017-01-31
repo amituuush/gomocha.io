@@ -63915,85 +63915,188 @@
 
 	'use strict';
 
-	var React = __webpack_require__(1);
-
-	var _require = __webpack_require__(159),
-	    Link = _require.Link;
-
-	var Navbar = React.createClass({
-	  displayName: 'Navbar',
-
-
-	  render: function render() {
-
-	    return React.createElement(
-	      'nav',
-	      { className: 'top-nav' },
-	      React.createElement(
-	        'ul',
-	        null,
-	        React.createElement(
-	          Link,
-	          { to: '/login' },
-	          React.createElement(
-	            'li',
-	            null,
-	            'Log in'
-	          )
-	        )
-	      )
-	    );
-
-	    // return (
-	    //   <div>
-	    //     <nav className="top-nav">
-	    //       <div
-	    //         className="menu-bars"
-	    //         onClick={() => {this.props.menuToggle()}}>
-	    //         <i className={this.props.menuShow ? 'fa fa-times fa-2x' : 'fa fa-bars fa-2x'} aria-hidden="true"></i>
-	    //       </div>
-	    //         <div className="top-nav-logo">
-	    //           <img src="/img/gomocha-logo-sml.png" />
-	    //         </div>
-	    //       <ul className={this.props.menuShow ? 'menu-show' : 'menu-hide'}>
-	    //         <Link to="/dashboard" onlyActiveOnIndex={true} className='router-link'>
-	    //           <li onClick={() => {this.props.menuToggle()}}>Dashboard</li>
-	    //         </Link>
-	    //         <Link to="/previous-orders" className="prev-orders-link">
-	    //           <li onClick={() => {this.props.menuToggle()}}>Previous Orders</li>
-	    //         </Link>
-	    //         <Link to="favorite-orders" className="fav-orders-link">
-	    //           <li onClick={() => {this.props.menuToggle()}}>Favorite Orders</li>
-	    //         </Link>
-	    //         <Link to="/" className='router-link'>
-	    //           <li className="sign-out" onClick={() => {this.props.menuToggle()}}>Sign Out</li>
-	    //         </Link>
-	    //       </ul>
-	    //     </nav>
-	    //     <nav className="side-nav">
-	    //       <Link to="/" onlyActiveOnIndex={true} className='router-link'>
-	    //         <div className="side-nav-logo">
-	    //           <img src="/img/gomocha-logo-sml.png" />
-	    //         </div>
-	    //       </Link>
-	    //       <Link to="/" onlyActiveOnIndex={true} className='router-link'>
-	    //         <i className="fa fa-home fa-2x" aria-hidden="true"></i>
-	    //       </Link>
-	    //       <Link to="/previous-orders" className="prev-orders-link">
-	    //         <i className="fa fa-clock-o fa-2x"></i>
-	    //       </Link>
-	    //       <Link to="favorite-orders" className="fav-orders-link">
-	    //         <i className="fa fa-heart fa-2x"></i>
-	    //       </Link>
-	    //       <div className="side-nav-divider"></div>
-	    //       <Link to="/" className='router-link'><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i></Link>
-	    //     </nav>
-	    //   </div>
-	    // );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Navbar;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(159);
+
+	var _reactRedux = __webpack_require__(222);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Navbar = function (_Component) {
+	  _inherits(Navbar, _Component);
+
+	  function Navbar() {
+	    _classCallCheck(this, Navbar);
+
+	    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
+	  }
+
+	  _createClass(Navbar, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      if (this.props.authenticated) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'nav',
+	            { className: 'top-nav' },
+	            _react2.default.createElement(
+	              'div',
+	              {
+	                className: 'menu-bars',
+	                onClick: function onClick() {
+	                  _this2.props.menuToggle();
+	                } },
+	              _react2.default.createElement('i', { className: this.props.menuShow ? 'fa fa-times fa-2x' : 'fa fa-bars fa-2x', 'aria-hidden': 'true' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'top-nav-logo' },
+	              _react2.default.createElement('img', { src: '/img/gomocha-logo-sml.png' })
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: this.props.menuShow ? 'menu-show' : 'menu-hide' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/dashboard', onlyActiveOnIndex: true, className: 'router-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Dashboard'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/previous-orders', className: 'prev-orders-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Previous Orders'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: 'favorite-orders', className: 'fav-orders-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Favorite Orders'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/', className: 'router-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'sign-out', onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Sign Out'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'nav',
+	            { className: 'side-nav' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'side-nav-logo' },
+	                _react2.default.createElement('img', { src: '/img/gomocha-logo-sml.png' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-home fa-2x', 'aria-hidden': 'true' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/previous-orders', className: 'prev-orders-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-clock-o fa-2x' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: 'favorite-orders', className: 'fav-orders-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-heart fa-2x' })
+	            ),
+	            _react2.default.createElement('div', { className: 'side-nav-divider' }),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/', className: 'router-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-sign-out fa-2x', 'aria-hidden': 'true' })
+	            )
+	          )
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'nav',
+	          { className: 'top-nav' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/login' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                'Log in'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/signup' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                'Sign up'
+	              )
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }]);
+
+	  return Navbar;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	  return {
+	    authenticated: state.auth.authenticated
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Navbar);
 
 /***/ },
 /* 395 */
@@ -79794,7 +79897,7 @@
 
 	var _redux = __webpack_require__(231);
 
-	var _authReducer = __webpack_require__(719);
+	var _authReducer = __webpack_require__(716);
 
 	var _authReducer2 = _interopRequireDefault(_authReducer);
 
@@ -79810,7 +79913,35 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 716 */,
+/* 716 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _types.AUTH_USER:
+	      return _extends({}, state, { authenticated: true });
+	    case _types.UNAUTH_USER:
+	      return _extends({}, state, { authenticated: false });
+	    case _types.AUTH_ERROR:
+	      return _extends({}, state, { error: action.payload });
+	  }
+	  return state;
+	};
+
+	var _types = __webpack_require__(714);
+
+/***/ },
 /* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -79849,35 +79980,6 @@
 
 	// exports
 
-
-/***/ },
-/* 719 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case _types.AUTH_USER:
-	      return _extends({}, state, { authenticated: true });
-	    case _types.UNAUTH_USER:
-	      return _extends({}, state, { authenticated: false });
-	    case _types.AUTH_ERROR:
-	      return _extends({}, state, { error: action.payload });
-	  }
-	  return state;
-	};
-
-	var _types = __webpack_require__(714);
 
 /***/ }
 /******/ ]);
