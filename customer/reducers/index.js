@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import commentsReducer from './comments';
+import authReducer from './authReducer';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-  comments: commentsReducer,
+  auth: authReducer,
   form: reduxFormReducer
 });
 

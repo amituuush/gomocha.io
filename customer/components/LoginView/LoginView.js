@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 import './login-view.scss';
 import * as actions from '../../actions';
 
@@ -10,8 +11,18 @@ class LoginView extends Component {
     this.props.loginUser({ email, password });
   }
 
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+
   render() {
-    const { handleSubmit, fields: { email, password }} = this.props;
+    const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
       <div className="login-view-container">
@@ -22,6 +33,7 @@ class LoginView extends Component {
           <div>
             <Field name="password" component="input" type="password" placeholder="Password"/>
           </div>
+          {this.renderAlert()}
           <button type="submit">Log in</button>
         </form>
       </div>
@@ -29,7 +41,15 @@ class LoginView extends Component {
   }
 }
 
-export default reduxForm({
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error };
+}
+
+LoginView = reduxForm({
   form: 'login',
   fields: ['email', 'password']
-}, null, actions)(LoginView);
+})(LoginView);
+
+LoginView = connect(mapStateToProps, actions)(LoginView);
+
+export default LoginView;

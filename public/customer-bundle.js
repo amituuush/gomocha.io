@@ -68,11 +68,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(714);
+	var _reducers = __webpack_require__(718);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _style = __webpack_require__(717);
+	var _style = __webpack_require__(720);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -85,7 +85,7 @@
 	  { store: createStoreWithMiddleware(_reducers2.default) },
 	  _react2.default.createElement(_reactRouter.Router, {
 	    routes: _routes2.default,
-	    history: _reactRouter.browserHistory,
+	    history: _reactRouter.hashHistory,
 	    onUpdate: function onUpdate() {
 	      return window.scrollTo(0, 0);
 	    } })
@@ -27635,6 +27635,14 @@
 
 	var _LoginView2 = _interopRequireDefault(_LoginView);
 
+	var _LogoutView = __webpack_require__(715);
+
+	var _LogoutView2 = _interopRequireDefault(_LogoutView);
+
+	var _SignupView = __webpack_require__(722);
+
+	var _SignupView2 = _interopRequireDefault(_SignupView);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = _react2.default.createElement(
@@ -27649,7 +27657,9 @@
 	              _react2.default.createElement(_reactRouter.Route, { path: '/order-summary', component: _OrderSummaryView2.default }),
 	              _react2.default.createElement(_reactRouter.Route, { path: '/confirmation', component: _ConfirmationView2.default }),
 	              _react2.default.createElement(_reactRouter.Route, { path: '/previous-orders', component: _PreviousOrdersView2.default }),
-	              _react2.default.createElement(_reactRouter.Route, { path: '/favorite-orders', component: _FavoriteOrdersView2.default })
+	              _react2.default.createElement(_reactRouter.Route, { path: '/favorite-orders', component: _FavoriteOrdersView2.default }),
+	              _react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _LogoutView2.default }),
+	              _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _SignupView2.default })
 	);
 
 	module.exports = Routes;
@@ -63915,85 +63925,188 @@
 
 	'use strict';
 
-	var React = __webpack_require__(1);
-
-	var _require = __webpack_require__(159),
-	    Link = _require.Link;
-
-	var Navbar = React.createClass({
-	  displayName: 'Navbar',
-
-
-	  render: function render() {
-
-	    return React.createElement(
-	      'nav',
-	      { className: 'top-nav' },
-	      React.createElement(
-	        'ul',
-	        null,
-	        React.createElement(
-	          Link,
-	          { to: '/login' },
-	          React.createElement(
-	            'li',
-	            null,
-	            'Log in'
-	          )
-	        )
-	      )
-	    );
-
-	    // return (
-	    //   <div>
-	    //     <nav className="top-nav">
-	    //       <div
-	    //         className="menu-bars"
-	    //         onClick={() => {this.props.menuToggle()}}>
-	    //         <i className={this.props.menuShow ? 'fa fa-times fa-2x' : 'fa fa-bars fa-2x'} aria-hidden="true"></i>
-	    //       </div>
-	    //         <div className="top-nav-logo">
-	    //           <img src="/img/gomocha-logo-sml.png" />
-	    //         </div>
-	    //       <ul className={this.props.menuShow ? 'menu-show' : 'menu-hide'}>
-	    //         <Link to="/dashboard" onlyActiveOnIndex={true} className='router-link'>
-	    //           <li onClick={() => {this.props.menuToggle()}}>Dashboard</li>
-	    //         </Link>
-	    //         <Link to="/previous-orders" className="prev-orders-link">
-	    //           <li onClick={() => {this.props.menuToggle()}}>Previous Orders</li>
-	    //         </Link>
-	    //         <Link to="favorite-orders" className="fav-orders-link">
-	    //           <li onClick={() => {this.props.menuToggle()}}>Favorite Orders</li>
-	    //         </Link>
-	    //         <Link to="/" className='router-link'>
-	    //           <li className="sign-out" onClick={() => {this.props.menuToggle()}}>Sign Out</li>
-	    //         </Link>
-	    //       </ul>
-	    //     </nav>
-	    //     <nav className="side-nav">
-	    //       <Link to="/" onlyActiveOnIndex={true} className='router-link'>
-	    //         <div className="side-nav-logo">
-	    //           <img src="/img/gomocha-logo-sml.png" />
-	    //         </div>
-	    //       </Link>
-	    //       <Link to="/" onlyActiveOnIndex={true} className='router-link'>
-	    //         <i className="fa fa-home fa-2x" aria-hidden="true"></i>
-	    //       </Link>
-	    //       <Link to="/previous-orders" className="prev-orders-link">
-	    //         <i className="fa fa-clock-o fa-2x"></i>
-	    //       </Link>
-	    //       <Link to="favorite-orders" className="fav-orders-link">
-	    //         <i className="fa fa-heart fa-2x"></i>
-	    //       </Link>
-	    //       <div className="side-nav-divider"></div>
-	    //       <Link to="/" className='router-link'><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i></Link>
-	    //     </nav>
-	    //   </div>
-	    // );
-	  }
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
 	});
 
-	module.exports = Navbar;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(159);
+
+	var _reactRedux = __webpack_require__(222);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Navbar = function (_Component) {
+	  _inherits(Navbar, _Component);
+
+	  function Navbar() {
+	    _classCallCheck(this, Navbar);
+
+	    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
+	  }
+
+	  _createClass(Navbar, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      if (this.props.authenticated) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'nav',
+	            { className: 'top-nav' },
+	            _react2.default.createElement(
+	              'div',
+	              {
+	                className: 'menu-bars',
+	                onClick: function onClick() {
+	                  _this2.props.menuToggle();
+	                } },
+	              _react2.default.createElement('i', { className: this.props.menuShow ? 'fa fa-times fa-2x' : 'fa fa-bars fa-2x', 'aria-hidden': 'true' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'top-nav-logo' },
+	              _react2.default.createElement('img', { src: '/img/gomocha-logo-sml.png' })
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: this.props.menuShow ? 'menu-show' : 'menu-hide' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/dashboard', onlyActiveOnIndex: true, className: 'router-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Dashboard'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/previous-orders', className: 'prev-orders-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Previous Orders'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: 'favorite-orders', className: 'fav-orders-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Favorite Orders'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/logout', className: 'router-link' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'sign-out', onClick: function onClick() {
+	                      _this2.props.menuToggle();
+	                    } },
+	                  'Log Out'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'nav',
+	            { className: 'side-nav' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'side-nav-logo' },
+	                _react2.default.createElement('img', { src: '/img/gomocha-logo-sml.png' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-home fa-2x', 'aria-hidden': 'true' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/previous-orders', className: 'prev-orders-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-clock-o fa-2x' })
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: 'favorite-orders', className: 'fav-orders-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-heart fa-2x' })
+	            ),
+	            _react2.default.createElement('div', { className: 'side-nav-divider' }),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/logout', className: 'router-link' },
+	              _react2.default.createElement('i', { className: 'fa fa-sign-out fa-2x', 'aria-hidden': 'true' })
+	            )
+	          )
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'nav',
+	          { className: 'top-nav' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/login' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                'Log in'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/signup' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                'Sign up'
+	              )
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }]);
+
+	  return Navbar;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	  return {
+	    authenticated: state.auth.authenticated
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Navbar);
 
 /***/ },
 /* 395 */
@@ -68148,6 +68261,8 @@
 
 	var _reduxForm = __webpack_require__(487);
 
+	var _reactRedux = __webpack_require__(222);
+
 	__webpack_require__(685);
 
 	var _actions = __webpack_require__(687);
@@ -68184,13 +68299,31 @@
 	      this.props.loginUser({ email: email, password: password });
 	    }
 	  }, {
+	    key: 'renderAlert',
+	    value: function renderAlert() {
+	      if (this.props.errorMessage) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Oops!'
+	          ),
+	          ' ',
+	          this.props.errorMessage
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props,
 	          handleSubmit = _props.handleSubmit,
 	          _props$fields = _props.fields,
 	          email = _props$fields.email,
-	          password = _props$fields.password;
+	          password = _props$fields.password,
+	          passwordConfirm = _props$fields.passwordConfirm;
 
 
 	      return _react2.default.createElement(
@@ -68209,6 +68342,7 @@
 	            null,
 	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
 	          ),
+	          this.renderAlert(),
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit' },
@@ -68222,10 +68356,18 @@
 	  return LoginView;
 	}(_react.Component);
 
-	exports.default = (0, _reduxForm.reduxForm)({
+	function mapStateToProps(state) {
+	  return { errorMessage: state.auth.error };
+	}
+
+	LoginView = (0, _reduxForm.reduxForm)({
 	  form: 'login',
 	  fields: ['email', 'password']
-	}, null, actions)(LoginView);
+	})(LoginView);
+
+	LoginView = (0, _reactRedux.connect)(mapStateToProps, actions)(LoginView);
+
+	exports.default = LoginView;
 
 /***/ },
 /* 487 */
@@ -78187,14 +78329,20 @@
 	  value: true
 	});
 	exports.loginUser = loginUser;
+	exports.authError = authError;
+	exports.logoutUser = logoutUser;
 
 	var _axios = __webpack_require__(688);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _reactRouter = __webpack_require__(159);
+
 	var _config = __webpack_require__(713);
 
 	var _config2 = _interopRequireDefault(_config);
+
+	var _types = __webpack_require__(714);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78209,14 +78357,34 @@
 	    _axios2.default.post(ROOT_URL + '/login', {
 	      email: email,
 	      password: password
+	    }).then(function (response) {
+	      // If request is good:
+	      //    -update state to indicate user is authenticated
+	      dispatch({ type: _types.AUTH_USER });
+	      //    - save JWT token
+	      localStorage.setItem('token', response.data.token);
+	      //    - redirect to the route '/dashboard'
+	      _reactRouter.hashHistory.push('/dashboard');
+	    }).catch(function () {
+	      // if request is bad:
+	      //    -show an error to the user
+	      dispatch(authError('Bad login info'));
 	    });
-	    // If request is good:
-	    //    -update state to indicate user is authenticated
-	    //    - save JWT token
-	    //    - redirect to the route '/dashboard'
+	  };
+	}
 
-	    // if request is bad:
-	    //    -show an error to the user
+	function authError(error) {
+	  return {
+	    type: _types.AUTH_ERROR,
+	    payload: error
+	  };
+	}
+
+	function logoutUser() {
+	  localStorage.removeItem('token');
+
+	  return {
+	    type: _types.UNAUTH_USER
 	  };
 	}
 
@@ -79726,30 +79894,16 @@
 
 /***/ },
 /* 714 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _redux = __webpack_require__(231);
-
-	var _comments = __webpack_require__(715);
-
-	var _comments2 = _interopRequireDefault(_comments);
-
-	var _reduxForm = __webpack_require__(487);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var rootReducer = (0, _redux.combineReducers)({
-	  comments: _comments2.default,
-	  form: _reduxForm.reducer
-	});
-
-	exports.default = rootReducer;
+	var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
+	var UNAUTH_USER = exports.UNAUTH_USER = 'UNAUTH_USER';
+	var AUTH_ERROR = exports.AUTH_ERROR = 'AUTH_ERROR';
 
 /***/ },
 /* 715 */
@@ -79761,40 +79915,164 @@
 	  value: true
 	});
 
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	  var action = arguments[1];
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	  switch (action.type) {
-	    case _types.SAVE_COMMENT:
-	      return [].concat(_toConsumableArray(state), [action.payload]);
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(222);
+
+	var _actions = __webpack_require__(687);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	__webpack_require__(716);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LogoutView = function (_Component) {
+	  _inherits(LogoutView, _Component);
+
+	  function LogoutView() {
+	    _classCallCheck(this, LogoutView);
+
+	    return _possibleConstructorReturn(this, (LogoutView.__proto__ || Object.getPrototypeOf(LogoutView)).apply(this, arguments));
 	  }
-	  return state;
-	};
 
-	var _types = __webpack_require__(716);
+	  _createClass(LogoutView, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.logoutUser();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'logout-view-container' },
+	        'Sorry to see you go!'
+	      );
+	    }
+	  }]);
 
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	  return LogoutView;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(null, actions)(LogoutView);
 
 /***/ },
 /* 716 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(717);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(383)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./logout-view.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./logout-view.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 717 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(382)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".logout-view-container {\n  margin-top: 5em;\n  margin-left: 5em; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 718 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var SAVE_COMMENT = exports.SAVE_COMMENT = 'SAVE_COMMENT';
+
+	var _redux = __webpack_require__(231);
+
+	var _authReducer = __webpack_require__(719);
+
+	var _authReducer2 = _interopRequireDefault(_authReducer);
+
+	var _reduxForm = __webpack_require__(487);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var rootReducer = (0, _redux.combineReducers)({
+	  auth: _authReducer2.default,
+	  form: _reduxForm.reducer
+	});
+
+	exports.default = rootReducer;
 
 /***/ },
-/* 717 */
+/* 719 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _types.AUTH_USER:
+	      return _extends({}, state, { authenticated: true });
+	    case _types.UNAUTH_USER:
+	      return _extends({}, state, { authenticated: false });
+	    case _types.AUTH_ERROR:
+	      return _extends({}, state, { error: action.payload });
+	  }
+	  return state;
+	};
+
+	var _types = __webpack_require__(714);
+
+/***/ },
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(718);
+	var content = __webpack_require__(721);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(383)(content, {});
@@ -79814,7 +80092,7 @@
 	}
 
 /***/ },
-/* 718 */
+/* 721 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(382)();
@@ -79823,6 +80101,139 @@
 
 	// module
 	exports.push([module.id, "body {\n  font-weight: 300;\n  background: #EDEFF0; }\n\nh1 {\n  text-align: center;\n  font-weight: 300; }\n\nh2 {\n  font-weight: 300;\n  margin: 0;\n  padding-bottom: 0.75em; }\n\ninput:focus,\nselect:focus,\ntextarea:focus,\nbutton:focus {\n  outline: none; }\n\n/* ------- NORMALIZE CSS ----------*/\nhtml {\n  font-family: 'Lato', sans-serif;\n  /* 1 */\n  font-size: 16px !important;\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin (opinionated).\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent displaying `audio` without controls in Mobile Safari 4/5/6/7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state (opinionated).\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address inconsistent styling of `abbr[title]`.\n * 1. Correct styling in Firefox 39 and Opera 12.\n * 2. Correct missing styling in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\n * Address inconsistent styling of b and strong.\n * 1. Correct duplicate application of `bolder` in Safari 6.0.2.\n * 2. Correct style set to `bold` in Edge 12+, Safari 6.2+, and Chrome 18+.\n */\nb,\nstrong {\n  font-weight: inherit;\n  /* 1 */ }\n\nb,\nstrong {\n  font-weight: bolder;\n  /* 2 */ }\n\n/**\n * Address styling not present in Android < 4.4.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Correct border-style given when inside `a` element in IE 8/9/10.\n */\nimg {\n  border-style: none; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address inconsistent styling of `hr`.\n * 1. Correct `box-sizing` set to `border-box` in Firefox.\n * 2. Correct `overflow` set to `hidden` in IE 8/9/10/11 and Edge 12.\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * 1. Correct inheritance and scaling of font-size for preformatted text.\n * 2. Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct font properties not being inherited.\n * 2. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Restore focus style in Firefox 4+ (unset by a rule above)\n */\nbutton:-moz-focusring,\ninput:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * Address `appearance` set to `searchfield` in Safari and Chrome.\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited from fieldset in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  color: inherit;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Restore font weight (unset by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 722 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(487);
+
+	var _reactRedux = __webpack_require__(222);
+
+	__webpack_require__(723);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SignupView = function (_Component) {
+	  _inherits(SignupView, _Component);
+
+	  function SignupView() {
+	    _classCallCheck(this, SignupView);
+
+	    return _possibleConstructorReturn(this, (SignupView.__proto__ || Object.getPrototypeOf(SignupView)).apply(this, arguments));
+	  }
+
+	  _createClass(SignupView, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          handleSubmit = _props.handleSubmit,
+	          _props$fields = _props.fields,
+	          email = _props$fields.email,
+	          password = _props$fields.password,
+	          passwordConfirm = _props$fields.passwordConfirm;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'signup-view-container' },
+	        _react2.default.createElement(
+	          'form',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', component: 'input', type: 'password', placeholder: 'Confirm password' })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit' },
+	            'Sign up!'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SignupView;
+	}(_react.Component);
+
+	SignupView = (0, _reduxForm.reduxForm)({
+	  form: 'signup',
+	  fields: ['email', 'password', 'passwordConfirm']
+	})(SignupView);
+
+	SignupView = (0, _reactRedux.connect)()(SignupView);
+
+	exports.default = SignupView;
+
+/***/ },
+/* 723 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(724);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(383)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./signup-view.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./signup-view.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 724 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(382)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".signup-view-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n", ""]);
 
 	// exports
 
