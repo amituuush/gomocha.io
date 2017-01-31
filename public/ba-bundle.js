@@ -74863,6 +74863,8 @@
 
 	var _reduxForm = __webpack_require__(265);
 
+	var _reactRedux = __webpack_require__(159);
+
 	__webpack_require__(654);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -74901,7 +74903,7 @@
 	  fields: ['email', 'password', 'passwordConfirm']
 	})(SignupView);
 
-	SignupView = connect()(SignupView);
+	SignupView = (0, _reactRedux.connect)()(SignupView);
 
 	exports.default = SignupView;
 
