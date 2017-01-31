@@ -38062,6 +38062,7 @@
 	});
 	exports.loginUser = loginUser;
 	exports.authError = authError;
+	exports.logoutUser = logoutUser;
 
 	var _axios = __webpack_require__(466);
 
@@ -38108,6 +38109,14 @@
 	  return {
 	    type: _types.AUTH_ERROR,
 	    payload: error
+	  };
+	}
+
+	function logoutUser() {
+	  localStorage.removeItem('token');
+
+	  return {
+	    type: _types.UNAUTH_USER
 	  };
 	}
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory, hashHistory } from 'react-router';
 import config from '../../config/config';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
 
 const ROOT_URL = config.ROOT_URL;
 
@@ -34,4 +34,12 @@ export function authError(error) {
     type: AUTH_ERROR,
     payload: error
   }
+}
+
+export function logoutUser() {
+  localStorage.removeItem('token');
+
+  return {
+    type: UNAUTH_USER,
+  };
 }
