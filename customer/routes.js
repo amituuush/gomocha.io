@@ -12,6 +12,7 @@ import FavoriteOrdersView from './components/FavoriteOrdersView/FavoriteOrdersVi
 import UsernameView from './components/UsernameView/UsernameView/UsernameView';
 import LoginView from './components/LoginView/LoginView';
 import LogoutView from './components/LogoutView/LogoutView';
+import SignupView from './components/SignupView/SignupView';
 
 var Routes = <Route path="/" component={App}>
               <IndexRoute component={UsernameView} />
@@ -25,6 +26,7 @@ var Routes = <Route path="/" component={App}>
               <Route path="/previous-orders" component={PreviousOrdersView} />
               <Route path="/favorite-orders" component={FavoriteOrdersView} />
               <Route path="/logout" component={LogoutView} />
+              <Route path="/signup" component={SignupView} />
             </Route>
 
 module.exports = Routes;
