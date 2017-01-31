@@ -80175,6 +80175,11 @@
 	            'div',
 	            null,
 	            _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', component: 'input', type: 'password', placeholder: 'Confirm password' })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit' },
+	            'Sign up!'
 	          )
 	        )
 	      );

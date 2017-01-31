@@ -20,6 +20,7 @@ class SignupView extends Component {
           <div>
             <Field name="passwordConfirm" component="input" type="password" placeholder="Confirm password" />
           </div>
+          <button type="submit">Sign up!</button>
         </form>
       </div>
     );
