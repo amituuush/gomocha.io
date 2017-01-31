@@ -78193,6 +78193,7 @@
 	  value: true
 	});
 	exports.loginUser = loginUser;
+	exports.authError = authError;
 
 	var _axios = __webpack_require__(688);
 
@@ -78230,7 +78231,15 @@
 	    }).catch(function () {
 	      // if request is bad:
 	      //    -show an error to the user
+	      dispatch(authError('Bad login info'));
 	    });
+	  };
+	}
+
+	function authError(error) {
+	  return {
+	    type: _types.AUTH_ERROR,
+	    payload: error
 	  };
 	}
 
@@ -79747,9 +79756,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var SAVE_COMMENT = exports.SAVE_COMMENT = 'SAVE_COMMENT';
 	var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
 	var UNAUTH_USER = exports.UNAUTH_USER = 'UNAUTH_USER';
+	var AUTH_ERROR = exports.AUTH_ERROR = 'AUTH_ERROR';
 
 /***/ },
 /* 715 */
@@ -79763,49 +79772,23 @@
 
 	var _redux = __webpack_require__(231);
 
-	var _auth_reducer = __webpack_require__(716);
+	var _authReducer = __webpack_require__(719);
 
-	var _auth_reducer2 = _interopRequireDefault(_auth_reducer);
+	var _authReducer2 = _interopRequireDefault(_authReducer);
 
 	var _reduxForm = __webpack_require__(487);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var rootReducer = (0, _redux.combineReducers)({
-	  auth: _auth_reducer2.default,
+	  auth: _authReducer2.default,
 	  form: _reduxForm.reducer
 	});
 
 	exports.default = rootReducer;
 
 /***/ },
-/* 716 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case _types.AUTH_USER:
-	      return _extends({}, state, { authenticated: true });
-	    case _types.UNAUTH_USER:
-	      return _extends({}, state, { authenticated: false });
-	  }
-	  return state;
-	};
-
-	var _types = __webpack_require__(714);
-
-/***/ },
+/* 716 */,
 /* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -79844,6 +79827,33 @@
 
 	// exports
 
+
+/***/ },
+/* 719 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _types.AUTH_USER:
+	      return _extends({}, state, { authenticated: true });
+	    case _types.UNAUTH_USER:
+	      return _extends({}, state, { authenticated: false });
+	  }
+	  return state;
+	};
+
+	var _types = __webpack_require__(714);
 
 /***/ }
 /******/ ]);

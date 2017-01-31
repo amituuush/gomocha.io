@@ -75,7 +75,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: _store2.default },
-	    _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.hashHistory, routes: _routes2.default })
+	    _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: _routes2.default })
 	), document.getElementById('root'));
 
 	// if order is more than 10 minutes away, show in other panel
@@ -38034,6 +38034,7 @@
 	  value: true
 	});
 	exports.loginUser = loginUser;
+	exports.authError = authError;
 
 	var _axios = __webpack_require__(466);
 
@@ -38044,6 +38045,8 @@
 	var _config = __webpack_require__(491);
 
 	var _config2 = _interopRequireDefault(_config);
+
+	var _types = __webpack_require__(619);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38065,11 +38068,19 @@
 	      localStorage.setItem('token', response.data.token);
 
 	      //    - redirect to the route '/dashboard'
-	      _reactRouter.hashHistory.push('/admin-dash');
+	      _reactRouter.browserHistory.push('/admin-dash');
 	    }).catch(function () {
 	      // if request is bad:
 	      //    -show an error to the user
+	      dispatch(authError('Bad login info'));
 	    });
+	  };
+	}
+
+	function authError(error) {
+	  return {
+	    type: _types.AUTH_ERROR,
+	    payload: error
 	  };
 	}
 
@@ -72362,6 +72373,10 @@
 	var FETCH_ORDERS_ERROR = exports.FETCH_ORDERS_ERROR = 'FETCH_ORDERS_ERROR';
 	var COMPLETE_ORDER = exports.COMPLETE_ORDER = 'COMPLETE_ORDER';
 
+	var AUTH_USER = exports.AUTH_USER = 'AUTH_USER';
+	var UNAUTH_USER = exports.UNAUTH_USER = 'UNAUTH_USER';
+	var AUTH_ERROR = exports.AUTH_ERROR = 'AUTH_ERROR';
+
 /***/ },
 /* 620 */
 /***/ function(module, exports, __webpack_require__) {
@@ -72937,10 +72952,14 @@
 
 	var _authReducer = __webpack_require__(651);
 
+	var _authReducer2 = _interopRequireDefault(_authReducer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var rootReducer = (0, _redux.combineReducers)({
 	    orders: _orderReducer.orderReducer,
 	    form: _reduxForm.reducer,
-	    auth: _authReducer.authReducer
+	    auth: _authReducer2.default
 	});
 
 	exports.default = rootReducer;
