@@ -80164,17 +80164,17 @@
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
+	            _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
+	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(Field, { name: 'passwordConfirm', component: 'input', type: 'password', placeholder: 'Confirm password' })
+	            _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', component: 'input', type: 'password', placeholder: 'Confirm password' })
 	          )
 	        )
 	      );

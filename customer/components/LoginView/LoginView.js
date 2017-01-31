@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import './login-view.scss';
 import * as actions from '../../actions';
