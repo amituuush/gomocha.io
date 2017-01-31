@@ -19,7 +19,7 @@ export function loginUser({ email, password }) {
   //    - save JWT token
       localStorage.setItem('token', response.data.token);
   //    - redirect to the route '/dashboard'
-      browserHistory.push('/dashboard');
+      browserHistory.push('/#/dashboard');
     })
     .catch(() => {
     // if request is bad:

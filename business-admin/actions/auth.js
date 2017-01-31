@@ -16,7 +16,7 @@ export function loginUser({ email, password }) {
   //    -update state to indicate user is authenticated
   //    - save JWT token
   //    - redirect to the route '/dashboard'
-      browserHistory.push('/admin-dash');
+      browserHistory.push('/#/admin-dash');
     })
     .catch(() => {
     // if request is bad:

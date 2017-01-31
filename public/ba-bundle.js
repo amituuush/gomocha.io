@@ -38063,7 +38063,7 @@
 	      //    -update state to indicate user is authenticated
 	      //    - save JWT token
 	      //    - redirect to the route '/dashboard'
-	      _reactRouter.browserHistory.push('/admin-dash');
+	      _reactRouter.browserHistory.push('/#/admin-dash');
 	    }).catch(function () {
 	      // if request is bad:
 	      //    -show an error to the user
