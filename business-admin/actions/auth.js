@@ -29,6 +29,24 @@ export function loginUser({ email, password }) {
   }
 }
 
+export function signupUser({ email, password }) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/signup`, {
+      email: email,
+      password: password
+    })
+      .then(response => {
+        dispatch({ type: AUTH_USER });
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/admin-dash');
+      })
+      .catch(error => {
+        let e = {...error};
+        dispatch(authError(e.response.data.error));
+      })
+  }
+}
+
 export function authError(error) {
   return {
     type: AUTH_ERROR,

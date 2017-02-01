@@ -1,6 +1,7 @@
 import { Route, IndexRoute } from 'react-router';
 import React from 'react';
 import App from './components/App/App';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 import DashboardView from './components/DashboardView/DashboardView/DashboardView';
 import CustomOrderView from './components/CustomOrderView/CustomOrderView/CustomOrderView';
 import SelectShopView from './components/SelectShopView/SelectShopView/SelectShopView';
@@ -17,14 +18,14 @@ import SignupView from './components/SignupView/SignupView';
 var Routes = <Route path="/" component={App}>
               <IndexRoute component={UsernameView} />
               <Route path="/login" component={LoginView} />
-              <Route path="/dashboard" component={DashboardView} />
-              <Route path="/select-shop" component={SelectShopView} />
-              <Route path="/custom-order" component={CustomOrderView} />
-              <Route path="/additional-info" component={AdditionalInfoView} />
-              <Route path="/order-summary" component={OrderSummaryView} />
-              <Route path="/confirmation" component={ConfirmationView} />
-              <Route path="/previous-orders" component={PreviousOrdersView} />
-              <Route path="/favorite-orders" component={FavoriteOrdersView} />
+              <Route path="/dashboard" component={RequireAuth(DashboardView)} />
+              <Route path="/select-shop" component={RequireAuth(SelectShopView)} />
+              <Route path="/custom-order" component={RequireAuth(CustomOrderView)} />
+              <Route path="/additional-info" component={RequireAuth(AdditionalInfoView)} />
+              <Route path="/order-summary" component={RequireAuth(OrderSummaryView)} />
+              <Route path="/confirmation" component={RequireAuth(ConfirmationView)} />
+              <Route path="/previous-orders" component={RequireAuth(PreviousOrdersView)} />
+              <Route path="/favorite-orders" component={RequireAuth(FavoriteOrdersView)} />
               <Route path="/logout" component={LogoutView} />
               <Route path="/signup" component={SignupView} />
             </Route>

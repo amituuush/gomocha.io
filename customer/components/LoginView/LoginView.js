@@ -36,6 +36,7 @@ class LoginView extends Component {
           {this.renderAlert()}
           <button type="submit">Log in</button>
         </form>
+
       </div>
     );
   }
