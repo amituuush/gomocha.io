@@ -73020,7 +73020,13 @@
 
 	var _reactRedux = __webpack_require__(159);
 
+	var _auth = __webpack_require__(465);
+
+	var actions = _interopRequireWildcard(_auth);
+
 	__webpack_require__(634);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73066,8 +73072,10 @@
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props,
+	          signupUser = _props.signupUser,
 	          error = _props.error,
 	          handleSubmit = _props.handleSubmit,
+	          submitting = _props.submitting,
 	          _props$fields = _props.fields,
 	          email = _props$fields.email,
 	          password = _props$fields.password,
@@ -73079,7 +73087,9 @@
 	        { className: 'signup-view-container' },
 	        _react2.default.createElement(
 	          'form',
-	          null,
+	          { onSubmit: handleSubmit(function (data) {
+	              signupUser(data);
+	            }) },
 	          _react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' }),
 	          _react2.default.createElement(_reduxForm.Field, { name: 'password', type: 'password', component: renderField, label: 'Password' }),
 	          _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', type: 'password', component: renderField, label: 'Confirm password' }),
@@ -73090,7 +73100,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { type: 'submit' },
+	            { type: 'submit', disabled: submitting },
 	            'Sign up!'
 	          )
 	        )
@@ -73129,7 +73139,7 @@
 	  validate: validate
 	})(SignupView);
 
-	SignupView = (0, _reactRedux.connect)()(SignupView);
+	SignupView = (0, _reactRedux.connect)(null, actions)(SignupView);
 
 	exports.default = SignupView;
 

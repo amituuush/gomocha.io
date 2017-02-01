@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import './signup-view.scss';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
@@ -13,18 +14,19 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 );
 
 class SignupView extends Component {
+
   render() {
 
-    const { error, handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
+    const { signupUser, error, handleSubmit, submitting, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
       <div className="signup-view-container">
-        <form>
-          <Field name="email" type="email" component={renderField} label="Email"/>
-          <Field name="password" type="password" component={renderField} label="Password"/>
-          <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
+        <form onSubmit={handleSubmit(data => {signupUser(data)})}>
+            <Field name="email" type="email" component={renderField} label="Email"/>
+            <Field name="password" type="password" component={renderField} label="Password"/>
+            <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
           {error && <strong>{error}</strong>}
-          <button type="submit">Sign up!</button>
+          <button type="submit" disabled={submitting}>Sign up!</button>
         </form>
       </div>
     );
@@ -59,6 +61,6 @@ SignupView = reduxForm({
   validate: validate
 })(SignupView);
 
-SignupView = connect()(SignupView);
+SignupView = connect(null, actions)(SignupView);
 
 export default SignupView;
