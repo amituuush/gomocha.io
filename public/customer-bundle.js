@@ -78328,6 +78328,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.loginUser = loginUser;
 	exports.signupUser = signupUser;
 	exports.authError = authError;
@@ -78386,8 +78389,9 @@
 	      dispatch({ type: _types.AUTH_USER });
 	      localStorage.setItem('token', response.data.token);
 	      _reactRouter.hashHistory.push('/dashboard');
-	    }).catch(function (response) {
-	      return dispatch(authError(response.data.error));
+	    }).catch(function (error) {
+	      var e = _extends({}, error);
+	      dispatch(authError(e.response.data.error));
 	    });
 	  };
 	}
@@ -80118,6 +80122,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // console.log('error message', this.props.errorMessage);
 	      var _props = this.props,
 	          signupUser = _props.signupUser,
 	          error = _props.error,

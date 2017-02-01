@@ -15,8 +15,18 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 class SignupView extends Component {
 
-  render() {
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
 
+  render() {
+    // console.log('error message', this.props.errorMessage);
     const { signupUser, error, handleSubmit, submitting, fields: { email, password, passwordConfirm }} = this.props;
 
     return (
@@ -26,6 +36,7 @@ class SignupView extends Component {
             <Field name="password" type="password" component={renderField} label="Password"/>
             <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
           {error && <strong>{error}</strong>}
+          {this.renderAlert()}
           <button type="submit" disabled={submitting}>Sign up!</button>
         </form>
       </div>
@@ -55,12 +66,16 @@ function validate(formProps) {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error };
+}
+
 SignupView = reduxForm({
   form: 'signup',
   fields: ['email', 'password', 'passwordConfirm'],
   validate: validate
 })(SignupView);
 
-SignupView = connect(null, actions)(SignupView);
+SignupView = connect(mapStateToProps, actions)(SignupView);
 
 export default SignupView;

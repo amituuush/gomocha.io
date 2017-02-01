@@ -40,7 +40,10 @@ export function signupUser({ email, password }) {
         localStorage.setItem('token', response.data.token);
         hashHistory.push('/dashboard');
       })
-      .catch(response => dispatch(authError(response.data.error)));
+      .catch(error => {
+        let e = {...error};
+        dispatch(authError(e.response.data.error));
+      })
   }
 }
 

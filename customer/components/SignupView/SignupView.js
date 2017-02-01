@@ -26,7 +26,7 @@ class SignupView extends Component {
   }
 
   render() {
-
+    // console.log('error message', this.props.errorMessage);
     const { signupUser, error, handleSubmit, submitting, fields: { email, password, passwordConfirm }} = this.props;
 
     return (

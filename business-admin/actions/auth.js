@@ -38,9 +38,12 @@ export function signupUser({ email, password }) {
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
-        hashHistory.push('/dashboard');
+        browserHistory.push('/admin-dash');
       })
-      .catch(response => dispatch(authError(response.data.error)));
+      .catch(error => {
+        let e = {...error};
+        dispatch(authError(e.response.data.error));
+      })
   }
 }
 

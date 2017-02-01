@@ -38073,6 +38073,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.loginUser = loginUser;
 	exports.signupUser = signupUser;
 	exports.authError = authError;
@@ -38130,9 +38133,10 @@
 	    }).then(function (response) {
 	      dispatch({ type: _types.AUTH_USER });
 	      localStorage.setItem('token', response.data.token);
-	      _reactRouter.hashHistory.push('/dashboard');
-	    }).catch(function (response) {
-	      return dispatch(authError(response.data.error));
+	      _reactRouter.browserHistory.push('/admin-dash');
+	    }).catch(function (error) {
+	      var e = _extends({}, error);
+	      dispatch(authError(e.response.data.error));
 	    });
 	  };
 	}
@@ -73096,8 +73100,26 @@
 	  }
 
 	  _createClass(SignupView, [{
+	    key: 'renderAlert',
+	    value: function renderAlert() {
+	      if (this.props.errorMessage) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Oops!'
+	          ),
+	          ' ',
+	          this.props.errorMessage
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // console.log('error message', this.props.errorMessage);
 	      var _props = this.props,
 	          signupUser = _props.signupUser,
 	          error = _props.error,
@@ -73125,6 +73147,7 @@
 	            null,
 	            error
 	          ),
+	          this.renderAlert(),
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit', disabled: submitting },
@@ -73160,13 +73183,17 @@
 	  return errors;
 	}
 
+	function mapStateToProps(state) {
+	  return { errorMessage: state.auth.error };
+	}
+
 	SignupView = (0, _reduxForm.reduxForm)({
 	  form: 'signup',
 	  fields: ['email', 'password', 'passwordConfirm'],
 	  validate: validate
 	})(SignupView);
 
-	SignupView = (0, _reactRedux.connect)(null, actions)(SignupView);
+	SignupView = (0, _reactRedux.connect)(mapStateToProps, actions)(SignupView);
 
 	exports.default = SignupView;
 
