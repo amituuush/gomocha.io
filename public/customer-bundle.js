@@ -63552,157 +63552,157 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var UsernameView = _react2.default.createClass({
-	    displayName: 'UsernameView',
+	  displayName: 'UsernameView',
 
 
-	    propTypes: {
-	        handleUsername: _react2.default.PropTypes.func
-	    },
+	  propTypes: {
+	    handleUsername: _react2.default.PropTypes.func
+	  },
 
-	    _handleUsernameSubmit: function _handleUsernameSubmit(event) {
-	        event.preventDefault();
-	        var username = this._usernameInput.value;
-	        this.props.handleUsername(username);
-	    },
+	  _handleUsernameSubmit: function _handleUsernameSubmit(event) {
+	    event.preventDefault();
+	    var username = this._usernameInput.value;
+	    this.props.handleUsername(username);
+	  },
 
-	    render: function render() {
-	        var _this = this;
+	  render: function render() {
+	    var _this = this;
 
-	        return _react2.default.createElement(
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'username-container' },
+	      _react2.default.createElement(
+	        'nav',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { href: '/' },
+	          _react2.default.createElement('img', { src: 'img/gomocha-logo-lg.png' })
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { href: '#how-it-works' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'How it works'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'About'
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Blog'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'title-cover-landing' },
+	        _react2.default.createElement('div', { className: 'title-cover-left' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'title-cover-right' },
+	          _react2.default.createElement(
 	            'div',
-	            { className: 'username-container' },
+	            { className: 'title-cover-right-child' },
 	            _react2.default.createElement(
-	                'nav',
+	              'h1',
+	              null,
+	              'Skip the morning coffee line. Order on your phone.'
+	            ),
+	            _react2.default.createElement(
+	              'form',
+	              null,
+	              _react2.default.createElement('input', {
+	                type: 'text',
+	                placeholder: 'What\'s your name?',
+	                name: 'username',
+	                ref: function ref(c) {
+	                  return _this._usernameInput = c;
+	                },
+	                required: true }),
+	              _react2.default.createElement(
+	                'button',
 	                null,
-	                _react2.default.createElement(
-	                    'a',
-	                    { href: '/' },
-	                    _react2.default.createElement('img', { src: 'img/gomocha-logo-lg.png' })
-	                ),
-	                _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#how-it-works' },
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            'How it works'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        'About'
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        'Blog'
-	                    )
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'title-cover-landing' },
-	                _react2.default.createElement('div', { className: 'title-cover-left' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'title-cover-right' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'title-cover-right-child' },
-	                        _react2.default.createElement(
-	                            'h1',
-	                            null,
-	                            'Skip the morning coffee line. Order on your phone.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'form',
-	                            null,
-	                            _react2.default.createElement('input', {
-	                                type: 'text',
-	                                placeholder: 'What\'s your name?',
-	                                name: 'username',
-	                                ref: function ref(c) {
-	                                    return _this._usernameInput = c;
-	                                },
-	                                required: true }),
-	                            _react2.default.createElement(
-	                                'button',
-	                                null,
-	                                'Go!'
-	                            )
-	                        )
-	                    )
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'landing-icon-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'how-it-works' },
-	                    _react2.default.createElement('a', { name: 'how-it-works' }),
-	                    'How it works'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'landing-icon landing-icon-1' },
-	                    _react2.default.createElement('img', { src: '/img/landing-icon-1.png' }),
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        'Select a shop'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'landing-icon landing-icon-2' },
-	                    _react2.default.createElement('img', { src: '/img/landing-icon-2.png' }),
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        'Place your order'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'landing-icon landing-icon-3' },
-	                    _react2.default.createElement('img', { src: '/img/landing-icon-3.png' }),
-	                    _react2.default.createElement(
-	                        'h2',
-	                        null,
-	                        'Ready when you arrive!'
-	                    )
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'landing-icon-button' },
-	                _react2.default.createElement(
-	                    'button',
-	                    null,
-	                    'Get Started!'
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'company-logo-container' },
-	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    'As Used By'
-	                ),
-	                _react2.default.createElement('img', { src: 'img/starbucks.png' }),
-	                _react2.default.createElement('img', { src: 'img/blue-bottle.png' }),
-	                _react2.default.createElement('img', { src: 'img/philz.png' }),
-	                _react2.default.createElement('img', { src: 'img/peets.png' })
-	            ),
-	            _react2.default.createElement(_Footer2.default, null)
-	        );
-	    }
+	                'Go!'
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'landing-icon-wrap' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'how-it-works' },
+	          _react2.default.createElement('a', { name: 'how-it-works' }),
+	          'How it works'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'landing-icon landing-icon-1' },
+	          _react2.default.createElement('img', { src: '/img/landing-icon-1.png' }),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Select a shop'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'landing-icon landing-icon-2' },
+	          _react2.default.createElement('img', { src: '/img/landing-icon-2.png' }),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Place your order'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'landing-icon landing-icon-3' },
+	          _react2.default.createElement('img', { src: '/img/landing-icon-3.png' }),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Ready when you arrive!'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'landing-icon-button' },
+	        _react2.default.createElement(
+	          'button',
+	          null,
+	          'Get Started!'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'company-logo-container' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'As Used By'
+	        ),
+	        _react2.default.createElement('img', { src: 'img/starbucks.png' }),
+	        _react2.default.createElement('img', { src: 'img/blue-bottle.png' }),
+	        _react2.default.createElement('img', { src: 'img/philz.png' }),
+	        _react2.default.createElement('img', { src: 'img/peets.png' })
+	      ),
+	      _react2.default.createElement(_Footer2.default, null)
+	    );
+	  }
 	});
 
 	module.exports = UsernameView;
@@ -64063,7 +64063,7 @@
 	            { className: 'side-nav' },
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              { to: '/dashboard', onlyActiveOnIndex: true, className: 'router-link' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'side-nav-logo' },
@@ -64072,7 +64072,7 @@
 	            ),
 	            _react2.default.createElement(
 	              _reactRouter.Link,
-	              { to: '/', onlyActiveOnIndex: true, className: 'router-link' },
+	              { to: '/dashboard', onlyActiveOnIndex: true, className: 'router-link' },
 	              _react2.default.createElement('i', { className: 'fa fa-home fa-2x', 'aria-hidden': 'true' })
 	            ),
 	            _react2.default.createElement(
