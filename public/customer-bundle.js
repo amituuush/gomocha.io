@@ -78379,7 +78379,16 @@
 	      password = _ref2.password;
 
 	  return function (dispatch) {
-	    _axios2.default.post(ROOT_URL + '/signup', { email: email, password: password });
+	    _axios2.default.post(ROOT_URL + '/signup', {
+	      email: email,
+	      password: password
+	    }).then(function (response) {
+	      dispatch({ type: _types.AUTH_USER });
+	      localStorage.setItem('token', response.data.token);
+	      _reactRouter.hashHistory.push('/dashboard');
+	    }).catch(function (response) {
+	      return dispatch(authError(response.data.error));
+	    });
 	  };
 	}
 
