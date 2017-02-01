@@ -61,3 +61,12 @@ export function logoutUser() {
     type: UNAUTH_USER,
   }
 }
+
+export function fetchMessage() {
+  return function(disptach) {
+    axios.get(ROOT_URL)
+      .then(response => {
+        console.log(response);
+      });
+  }
+}
