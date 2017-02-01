@@ -13,7 +13,7 @@ var Routes = <Route path="/admin-login" component={App}>
 
                 <Route path="/order-history" component={OrderHistoryView} />
                 <Route path="/logout" component={LogoutView} />
-                <Route path="/signup" component={SignupView} />
+                <Route path="/admin-signup" component={SignupView} />
              </Route>
 
 module.exports = Routes;

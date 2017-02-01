@@ -27597,7 +27597,7 @@
 	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-dash', component: _BusinessAdminView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/order-history', component: _OrderHistoryView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _LogoutView2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _SignupView2.default })
+	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-signup', component: _SignupView2.default })
 	);
 
 	module.exports = Routes;
@@ -28001,6 +28001,8 @@
 
 	var _reactRedux = __webpack_require__(159);
 
+	var _reactRouter = __webpack_require__(197);
+
 	__webpack_require__(463);
 
 	var _auth = __webpack_require__(465);
@@ -28084,6 +28086,12 @@
 	            'button',
 	            { type: 'submit' },
 	            'Log in'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/admin-signup' },
+	            'Sign up'
 	          )
 	        )
 	      );
@@ -38066,6 +38074,7 @@
 	  value: true
 	});
 	exports.loginUser = loginUser;
+	exports.signupUser = signupUser;
 	exports.authError = authError;
 	exports.logoutUser = logoutUser;
 
@@ -38107,6 +38116,15 @@
 	      //    -show an error to the user
 	      dispatch(authError('Bad login info'));
 	    });
+	  };
+	}
+
+	function signupUser(_ref2) {
+	  var email = _ref2.email,
+	      password = _ref2.password;
+
+	  return function (dispatch) {
+	    _axios2.default.post(ROOT_URL + '/signup', { email: email, password: password });
 	  };
 	}
 

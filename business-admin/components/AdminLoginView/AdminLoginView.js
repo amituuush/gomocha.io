@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import './admin-login-view.scss';
 import * as actions from '../../actions/auth';
 
@@ -36,6 +37,8 @@ class AdminLoginView extends Component {
           </div>
           {this.renderAlert()}
           <button type="submit">Log in</button>
+          <br />
+          <Link to="/admin-signup">Sign up</Link>
         </form>
       </div>
     );
