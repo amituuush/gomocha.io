@@ -80245,7 +80245,7 @@
 
 	  switch (action.type) {
 	    case _types.AUTH_USER:
-	      return _extends({}, state, { authenticated: true });
+	      return _extends({}, state, { error: '', authenticated: true });
 	    case _types.UNAUTH_USER:
 	      return _extends({}, state, { authenticated: false });
 	    case _types.AUTH_ERROR:
