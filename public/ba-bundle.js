@@ -27999,16 +27999,16 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	exports.default = function (ComposedComponent) {
-	  var Authentication = function (_Component) {
-	    _inherits(Authentication, _Component);
+	  var RequireAuth = function (_Component) {
+	    _inherits(RequireAuth, _Component);
 
-	    function Authentication() {
-	      _classCallCheck(this, Authentication);
+	    function RequireAuth() {
+	      _classCallCheck(this, RequireAuth);
 
-	      return _possibleConstructorReturn(this, (Authentication.__proto__ || Object.getPrototypeOf(Authentication)).apply(this, arguments));
+	      return _possibleConstructorReturn(this, (RequireAuth.__proto__ || Object.getPrototypeOf(RequireAuth)).apply(this, arguments));
 	    }
 
-	    _createClass(Authentication, [{
+	    _createClass(RequireAuth, [{
 	      key: 'componentWillMount',
 	      value: function componentWillMount() {
 	        if (!this.props.authenticated) {
@@ -28029,10 +28029,10 @@
 	      }
 	    }]);
 
-	    return Authentication;
+	    return RequireAuth;
 	  }(_react.Component);
 
-	  Authentication.contextTypes = {
+	  RequireAuth.contextTypes = {
 	    router: _react2.default.PropTypes.object
 	  };
 
@@ -28041,7 +28041,7 @@
 	    return { authenticated: state.auth.authenticated };
 	  }
 
-	  return (0, _reactRedux.connect)(mapStateToProps)(Authentication);
+	  return (0, _reactRedux.connect)(mapStateToProps)(RequireAuth);
 	};
 
 	var _react = __webpack_require__(1);
@@ -38157,6 +38157,7 @@
 	exports.signupUser = signupUser;
 	exports.authError = authError;
 	exports.logoutUser = logoutUser;
+	exports.fetchMessage = fetchMessage;
 
 	var _axios = __webpack_require__(467);
 
@@ -38230,6 +38231,16 @@
 
 	  return {
 	    type: _types.UNAUTH_USER
+	  };
+	}
+
+	function fetchMessage() {
+	  return function (disptach) {
+	    _axios2.default.get(ROOT_URL, {
+	      headers: { authorization: localStorage.getItem('token') }
+	    }).then(function (response) {
+	      console.log(response);
+	    });
 	  };
 	}
 
@@ -39761,7 +39772,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -39778,58 +39789,61 @@
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _index = __webpack_require__(620);
+	var _actions = __webpack_require__(620);
+
+	var _auth = __webpack_require__(466);
 
 	var _redux = __webpack_require__(170);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var BusinessAdminView = _react2.default.createClass({
-	    displayName: 'BusinessAdminView',
+	  displayName: 'BusinessAdminView',
 
 
-	    propTypes: {
-	        orders: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.object, _react2.default.PropTypes.array]),
-	        fetchOrders: _react2.default.PropTypes.func,
-	        completeOrders: _react2.default.PropTypes.func
-	    },
+	  propTypes: {
+	    orders: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.object, _react2.default.PropTypes.array]),
+	    fetchOrders: _react2.default.PropTypes.func,
+	    completeOrders: _react2.default.PropTypes.func
+	  },
 
-	    componentWillMount: function componentWillMount() {
-	        this.props.fetchOrders();
-	        setInterval(this.props.fetchOrders, 5000);
-	    },
+	  componentWillMount: function componentWillMount() {
+	    this.props.fetchMessage();
+	    this.props.fetchOrders();
+	    setInterval(this.props.fetchOrders, 5000);
+	  },
 
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'ba-view-container' },
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'ba-view-wrap' },
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Today\'s Orders'
-	                ),
-	                _react2.default.createElement(_OrdersContainer2.default, {
-	                    orders: this.props.orders,
-	                    completeOrder: this.props.completeOrder })
-	            )
-	        );
-	    }
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'ba-view-container' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'ba-view-wrap' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Today\'s Orders'
+	        ),
+	        _react2.default.createElement(_OrdersContainer2.default, {
+	          orders: this.props.orders,
+	          completeOrder: this.props.completeOrder })
+	      )
+	    );
+	  }
 	});
 
 	// takes app state as an argument, and whatever gets returned will show up as props inside BusinessAdminView
 	function mapStateToProps(state) {
-	    return {
-	        orders: state.orders
-	    };
+	  return {
+	    orders: state.orders
+	  };
 	}
 
 	// anything returned from this function will end up as props on the BusinessAdminView container
 	function mapDispatchToProps(dispatch) {
-	    // bindActionCreators and dispatch: takes whatever is returned from fetchOrders and makes sure it gets pushed to all the reducers
-	    return (0, _redux.bindActionCreators)({ fetchOrders: _index.fetchOrders, completeOrder: _index.completeOrder }, dispatch);
+	  // bindActionCreators and dispatch: takes whatever is returned from fetchOrders and makes sure it gets pushed to all the reducers
+	  return (0, _redux.bindActionCreators)({ fetchOrders: _actions.fetchOrders, completeOrder: _actions.completeOrder, fetchMessage: _auth.fetchMessage }, dispatch);
 	}
 
 	// promote BusinessAdminView from component to container. It needs to know about this new dispatch method, fetchOrders. Make it available as a prop

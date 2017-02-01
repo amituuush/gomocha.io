@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export default function(ComposedComponent) {
-  class Authentication extends Component {
+  class RequireAuth extends Component {
     static contextTypes = {
       router: React.PropTypes.object
     }
@@ -28,5 +28,5 @@ export default function(ComposedComponent) {
     return { authenticated: state.auth.authenticated };
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(RequireAuth);
 }

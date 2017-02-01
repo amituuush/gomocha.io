@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -52,6 +52,10 @@ class DashboardView extends Component {
 DashboardView.propTypes = {
   username: React.PropTypes.string,
   handleClearItemsFromOrder: React.PropTypes.func
+}
+
+function mapStateToProps(state) {
+  return { message: state.auth.message };
 }
 
 export default connect(null, actions)(DashboardView);
