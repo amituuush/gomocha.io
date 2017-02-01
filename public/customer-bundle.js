@@ -80099,6 +80099,23 @@
 	  }
 
 	  _createClass(SignupView, [{
+	    key: 'renderAlert',
+	    value: function renderAlert() {
+	      if (this.props.errorMessage) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Oops!'
+	          ),
+	          ' ',
+	          this.props.errorMessage
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props,
@@ -80128,6 +80145,7 @@
 	            null,
 	            error
 	          ),
+	          this.renderAlert(),
 	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit', disabled: submitting },
@@ -80163,13 +80181,17 @@
 	  return errors;
 	}
 
+	function mapStateToProps(state) {
+	  return { errorMessage: state.auth.error };
+	}
+
 	SignupView = (0, _reduxForm.reduxForm)({
 	  form: 'signup',
 	  fields: ['email', 'password', 'passwordConfirm'],
 	  validate: validate
 	})(SignupView);
 
-	SignupView = (0, _reactRedux.connect)(null, actions)(SignupView);
+	SignupView = (0, _reactRedux.connect)(mapStateToProps, actions)(SignupView);
 
 	exports.default = SignupView;
 
