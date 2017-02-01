@@ -27596,7 +27596,7 @@
 	                _react2.default.createElement(_reactRouter.IndexRoute, { component: _AdminLoginView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-dash', component: _BusinessAdminView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/order-history', component: _OrderHistoryView2.default }),
-	                _react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _LogoutView2.default }),
+	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-logout', component: _LogoutView2.default }),
 	                _react2.default.createElement(_reactRouter.Route, { path: '/admin-signup', component: _SignupView2.default })
 	);
 

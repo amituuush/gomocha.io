@@ -12,7 +12,7 @@ var Routes = <Route path="/admin-login" component={App}>
                 <Route path="/admin-dash" component={BusinessAdminView} />
 
                 <Route path="/order-history" component={OrderHistoryView} />
-                <Route path="/logout" component={LogoutView} />
+                <Route path="/admin-logout" component={LogoutView} />
                 <Route path="/admin-signup" component={SignupView} />
              </Route>
 
