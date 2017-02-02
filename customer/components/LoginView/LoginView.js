@@ -36,14 +36,19 @@ class LoginView extends Component {
           <h2>Log in to your account</h2>
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             <div>
+              <img src="./img/user-icon.png" alt="user"/>
               <Field name="email" component="input" type="email" placeholder="Email"/>
             </div>
             <div>
+              <img src="./img/password-icon.png" alt="password"/>
               <Field name="password" component="input" type="password" placeholder="Password"/>
             </div>
             {this.renderAlert()}
             <button type="submit">Log in</button>
           </form>
+        </div>
+        <div className="login-footer">
+            <p>New to GoMocha.io?</p><Link to="/signup">Sign up</Link>
         </div>
 
       </div>

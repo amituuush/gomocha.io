@@ -70077,11 +70077,13 @@
 	            _react2.default.createElement(
 	              'div',
 	              null,
+	              _react2.default.createElement('img', { src: './img/user-icon.png', alt: 'user' }),
 	              _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              null,
+	              _react2.default.createElement('img', { src: './img/password-icon.png', alt: 'password' }),
 	              _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
 	            ),
 	            this.renderAlert(),
@@ -70090,6 +70092,20 @@
 	              { type: 'submit' },
 	              'Log in'
 	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'login-footer' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'New to GoMocha.io?'
+	          ),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/signup' },
+	            'Sign up'
 	          )
 	        )
 	      );
@@ -80057,7 +80073,7 @@
 
 
 	// module
-	exports.push([module.id, ".login-view-container {\n  background: #41B486;\n  width: 100%;\n  height: 100vh;\n  padding: 5em 0 0 0; }\n  .login-view-container .gomocha-logo {\n    width: 10em;\n    margin: 0 auto; }\n    .login-view-container .gomocha-logo img {\n      width: 8em; }\n  .login-view-container .login-panel {\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    border-radius: 8px;\n    background: #fff;\n    text-align: center;\n    padding: 3em 2em 2em 2em;\n    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05); }\n    .login-view-container .login-panel h2 {\n      color: #41B486;\n      padding-bottom: 2em; }\n    .login-view-container .login-panel input {\n      padding-left: 50px;\n      height: 2.5em;\n      width: 80%;\n      border: 1px solid #cbcbd2;\n      border-radius: 4px;\n      margin-bottom: 20px;\n      box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.4); }\n      .login-view-container .login-panel input:focus {\n        box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.2), 0 0 4px rgba(121, 88, 159, 0.3);\n        border-color: #41B486; }\n    .login-view-container .login-panel button {\n      background: #41B486;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      width: 93%;\n      padding: 12px 16px; }\n", ""]);
+	exports.push([module.id, ".login-view-container {\n  background: #41B486;\n  width: 100%;\n  height: 100vh;\n  padding: 5em 0 0 0; }\n  .login-view-container .gomocha-logo {\n    width: 10em;\n    margin: 0 auto; }\n    .login-view-container .gomocha-logo img {\n      width: 8em; }\n  .login-view-container .login-panel {\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    border-top-left-radius: 8px;\n    border-top-right-radius: 8px;\n    background: #fff;\n    text-align: center;\n    padding: 3em 2em 2em 2em;\n    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05); }\n    .login-view-container .login-panel h2 {\n      color: #41B486;\n      padding-bottom: 1em; }\n    .login-view-container .login-panel input {\n      padding-left: 50px;\n      height: 2.5em;\n      width: 80%;\n      border: 1px solid #cbcbd2;\n      border-radius: 4px;\n      box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.4);\n      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }\n      .login-view-container .login-panel input:focus {\n        box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.2), 0 0 4px rgba(121, 88, 159, 0.3);\n        border-color: #41B486; }\n    .login-view-container .login-panel img {\n      width: 1.2em;\n      position: relative;\n      right: 8.8em;\n      top: 2.2em; }\n    .login-view-container .login-panel button {\n      background: #41B486;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      width: 95%;\n      padding: 12px 16px;\n      margin-top: 25px; }\n  .login-view-container .login-footer {\n    background-color: #f5f5f5;\n    border-top: 1px solid #ddd;\n    border-bottom-right-radius: 8px;\n    border-bottom-left-radius: 8px;\n    border-top-right-radius: 0px;\n    border-top-left-radius: 0px;\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    text-align: center;\n    padding: 0.5em 2em 0.5em 2em; }\n    .login-view-container .login-footer p {\n      display: inline-block;\n      padding-right: 1em;\n      color: #878797; }\n    .login-view-container .login-footer a {\n      color: #41B486; }\n", ""]);
 
 	// exports
 
