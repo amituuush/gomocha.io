@@ -34,12 +34,12 @@ class Navbar extends Component {
           </ul>
         </nav>
         <nav className="side-nav">
-          <Link to="/" onlyActiveOnIndex={true} className='router-link'>
+          <Link to="/dashboard" onlyActiveOnIndex={true} className='router-link'>
             <div className="side-nav-logo">
               <img src="/img/gomocha-logo-sml.png" />
             </div>
           </Link>
-          <Link to="/" onlyActiveOnIndex={true} className='router-link'>
+          <Link to="/dashboard" onlyActiveOnIndex={true} className='router-link'>
             <i className="fa fa-home fa-2x" aria-hidden="true"></i>
           </Link>
           <Link to="/previous-orders" className="prev-orders-link">
@@ -55,12 +55,7 @@ class Navbar extends Component {
     );
     } else {
       return (
-        <nav className="top-nav">
-          <ul>
-            <Link to="/login"><li>Log in</li></Link>
-            <Link to="/signup"><li>Sign up</li></Link>
-          </ul>
-        </nav>
+        <div></div>
       );
     }
   }

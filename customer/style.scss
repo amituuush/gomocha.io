@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+// @import url('https://fonts.googleapis.com/css?family=Lato');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
 body {
   font-weight: 300;
   background: #EDEFF0;
@@ -26,7 +30,7 @@ button:focus {
 /* ------- NORMALIZE CSS ----------*/
 
 html {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Nunito', sans-serif;
   /* 1 */
   font-size: 16px !important;
   -ms-text-size-adjust: 100%;

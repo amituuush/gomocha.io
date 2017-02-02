@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory, hashHistory } from 'react-router';
 import config from '../../config/config';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 const ROOT_URL = config.ROOT_URL;
 
@@ -59,5 +59,19 @@ export function logoutUser() {
 
   return {
     type: UNAUTH_USER,
+  }
+}
+
+export function fetchMessage() {
+  return function(disptach) {
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_MESSAGE,
+          payload: action.payload.data.message
+        })
+      });
   }
 }

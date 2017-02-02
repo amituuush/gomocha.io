@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import './login-view.scss';
 import * as actions from '../../actions';
 
@@ -26,16 +27,29 @@ class LoginView extends Component {
 
     return (
       <div className="login-view-container">
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <div>
-            <Field name="email" component="input" type="email" placeholder="Email"/>
-          </div>
-          <div>
-            <Field name="password" component="input" type="password" placeholder="Password"/>
-          </div>
-          {this.renderAlert()}
-          <button type="submit">Log in</button>
-        </form>
+        <div className="gomocha-logo">
+          <Link to="/">
+            <img src="./img/gomocha-io-white.png" alt="GoMocha logo" />
+          </Link>
+        </div>
+        <div className="login-panel">
+          <h2>Log in to your account</h2>
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+            <div>
+              <img src="./img/user-icon.png" alt="user"/>
+              <Field name="email" component="input" type="email" placeholder="Email"/>
+            </div>
+            <div>
+              <img src="./img/password-icon.png" alt="password"/>
+              <Field name="password" component="input" type="password" placeholder="Password"/>
+            </div>
+            {this.renderAlert()}
+            <button type="submit">Log in</button>
+          </form>
+        </div>
+        <div className="login-footer">
+            <p>New to GoMocha.io?</p><Link to="/signup">Sign up</Link>
+        </div>
 
       </div>
     );
