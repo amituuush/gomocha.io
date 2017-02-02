@@ -64098,32 +64098,7 @@
 	          )
 	        );
 	      } else {
-	        return _react2.default.createElement(
-	          'nav',
-	          { className: 'top-nav' },
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/login' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                'Log in'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/signup' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                'Sign up'
-	              )
-	            )
-	          )
-	        );
+	        return _react2.default.createElement('div', null);
 	      }
 	    }
 	  }]);
@@ -70011,6 +69986,8 @@
 
 	var _reactRedux = __webpack_require__(222);
 
+	var _reactRouter = __webpack_require__(159);
+
 	__webpack_require__(714);
 
 	var _actions = __webpack_require__(398);
@@ -70078,23 +70055,41 @@
 	        'div',
 	        { className: 'login-view-container' },
 	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
+	          'div',
+	          { className: 'gomocha-logo' },
 	          _react2.default.createElement(
-	            'div',
+	            _reactRouter.Link,
+	            { to: '/' },
+	            _react2.default.createElement('img', { src: './img/gomocha-io-white.png', alt: 'GoMocha logo' })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'login-panel' },
+	          _react2.default.createElement(
+	            'h2',
 	            null,
-	            _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
+	            'Log in to your account'
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
-	          ),
-	          this.renderAlert(),
-	          _react2.default.createElement(
-	            'button',
-	            { type: 'submit' },
-	            'Log in'
+	            'form',
+	            { onSubmit: handleSubmit(this.handleFormSubmit.bind(this)) },
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email', placeholder: 'Email' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(_reduxForm.Field, { name: 'password', component: 'input', type: 'password', placeholder: 'Password' })
+	            ),
+	            this.renderAlert(),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit' },
+	              'Log in'
+	            )
 	          )
 	        )
 	      );
@@ -80062,7 +80057,7 @@
 
 
 	// module
-	exports.push([module.id, ".login-view-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n", ""]);
+	exports.push([module.id, ".login-view-container {\n  background: #41B486;\n  width: 100%;\n  height: 100vh;\n  padding: 5em 0 0 0; }\n  .login-view-container .gomocha-logo {\n    width: 10em;\n    margin: 0 auto; }\n    .login-view-container .gomocha-logo img {\n      width: 8em; }\n  .login-view-container .login-panel {\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    border-radius: 8px;\n    background: #fff;\n    text-align: center;\n    padding: 2em;\n    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05); }\n    .login-view-container .login-panel h2 {\n      color: #41B486; }\n    .login-view-container .login-panel input {\n      padding-left: 50px;\n      height: 3.15em;\n      width: 80%;\n      border: 1px solid #cbcbd2;\n      border-radius: 4px;\n      margin-bottom: 20px; }\n    .login-view-container .login-panel button {\n      background: #41B486;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      width: 93%;\n      padding: 12px 16px; }\n", ""]);
 
 	// exports
 

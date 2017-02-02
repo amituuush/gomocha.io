@@ -55,12 +55,7 @@ class Navbar extends Component {
     );
     } else {
       return (
-        <nav className="top-nav">
-          <ul>
-            <Link to="/login"><li>Log in</li></Link>
-            <Link to="/signup"><li>Sign up</li></Link>
-          </ul>
-        </nav>
+        <div></div>
       );
     }
   }
