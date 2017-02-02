@@ -1,9 +1,9 @@
 
-import React from 'react'
-import Footer from '../../DashboardView/Footer/Footer'
-import sass from './username-view.scss'
-import sass2 from '../../App/app.scss'
-import { Link } from 'react-router'
+import React from 'react';
+import { Link } from 'react-router';
+import Footer from '../../DashboardView/Footer/Footer';
+import './username-view.scss';
+import '../../App/app.scss';
 
 var UsernameView = React.createClass({
 
@@ -24,8 +24,8 @@ var UsernameView = React.createClass({
           <a href="/"><img src="img/gomocha-logo-lg.png" /></a>
           <ul>
             <a href="#how-it-works"><li>How it works</li></a>
-            <li>About</li>
-            <li>Blog</li>
+            <Link to="/login"><li>Log in</li></Link>
+            <Link to="/signup"><li className="link-signup">Sign up</li></Link>
           </ul>
         </nav>
         <div className="title-cover-landing">
