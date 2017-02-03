@@ -69978,6 +69978,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -70004,6 +70006,29 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var renderField = function renderField(_ref) {
+	  var input = _ref.input,
+	      label = _ref.label,
+	      type = _ref.type,
+	      _ref$meta = _ref.meta,
+	      touched = _ref$meta.touched,
+	      error = _ref$meta.error;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement('input', _extends({}, input, { placeholder: label, type: type })),
+	      touched && error && _react2.default.createElement(
+	        'span',
+	        null,
+	        error
+	      )
+	    )
+	  );
+	};
+
 	var LoginView = function (_Component) {
 	  _inherits(LoginView, _Component);
 
@@ -70015,9 +70040,9 @@
 
 	  _createClass(LoginView, [{
 	    key: 'handleFormSubmit',
-	    value: function handleFormSubmit(_ref) {
-	      var email = _ref.email,
-	          password = _ref.password;
+	    value: function handleFormSubmit(_ref2) {
+	      var email = _ref2.email,
+	          password = _ref2.password;
 
 	      console.log(email, password);
 	      // Need to do something to log user in
@@ -70047,8 +70072,7 @@
 	          handleSubmit = _props.handleSubmit,
 	          _props$fields = _props.fields,
 	          email = _props$fields.email,
-	          password = _props$fields.password,
-	          passwordConfirm = _props$fields.passwordConfirm;
+	          password = _props$fields.password;
 
 
 	      return _react2.default.createElement(
@@ -80096,6 +80120,8 @@
 
 	var _reactRedux = __webpack_require__(222);
 
+	var _reactRouter = __webpack_require__(159);
+
 	var _actions = __webpack_require__(398);
 
 	var actions = _interopRequireWildcard(_actions);
@@ -80132,7 +80158,12 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'logout-view-container' },
-	        'Sorry to see you go!'
+	        'Sorry to see you go!',
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          'Back to home'
+	        )
 	      );
 	    }
 	  }]);
@@ -80203,6 +80234,8 @@
 	var _reduxForm = __webpack_require__(516);
 
 	var _reactRedux = __webpack_require__(222);
+
+	var _reactRouter = __webpack_require__(159);
 
 	var _actions = __webpack_require__(398);
 
@@ -80288,23 +80321,70 @@
 	        'div',
 	        { className: 'signup-view-container' },
 	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: handleSubmit(function (data) {
-	              signupUser(data);
-	            }) },
-	          _react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' }),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'password', type: 'password', component: renderField, label: 'Password' }),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', type: 'password', component: renderField, label: 'Confirm password' }),
-	          error && _react2.default.createElement(
-	            'strong',
-	            null,
-	            error
-	          ),
-	          this.renderAlert(),
+	          'div',
+	          { className: 'gomocha-logo' },
 	          _react2.default.createElement(
-	            'button',
-	            { type: 'submit', disabled: submitting },
-	            'Sign up!'
+	            _reactRouter.Link,
+	            { to: '/' },
+	            _react2.default.createElement('img', { src: './img/gomocha-io-white.png', alt: 'GoMocha logo' })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'signup-panel' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Sign up with us!'
+	          ),
+	          _react2.default.createElement(
+	            'form',
+	            { onSubmit: handleSubmit(function (data) {
+	                signupUser(data);
+	              }) },
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement('img', { src: './img/user-icon.png', alt: 'user' }),
+	              _react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement('img', { src: './img/password-icon.png', alt: 'password' }),
+	              _react2.default.createElement(_reduxForm.Field, { name: 'password', type: 'password', component: renderField, label: 'Password' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement('img', { src: './img/password-icon.png', alt: 'password' }),
+	              _react2.default.createElement(_reduxForm.Field, { name: 'passwordConfirm', type: 'password', component: renderField, label: 'Confirm password' })
+	            ),
+	            error && _react2.default.createElement(
+	              'strong',
+	              null,
+	              error
+	            ),
+	            this.renderAlert(),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit', disabled: submitting },
+	              'Sign up!'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'login-footer' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Already have a GoMocha.io account?'
+	          ),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/login' },
+	            'Log in'
 	          )
 	        )
 	      );
@@ -80385,7 +80465,7 @@
 
 
 	// module
-	exports.push([module.id, ".signup-view-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n", ""]);
+	exports.push([module.id, ".signup-view-container {\n  background: #41B486;\n  width: 100%;\n  height: 100vh;\n  padding: 5em 0 0 0; }\n  .signup-view-container .gomocha-logo {\n    width: 10em;\n    margin: 0 auto; }\n    .signup-view-container .gomocha-logo img {\n      width: 8em; }\n  .signup-view-container .signup-panel {\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    border-top-left-radius: 8px;\n    border-top-right-radius: 8px;\n    background: #fff;\n    text-align: center;\n    padding: 3em 2em 2em 2em;\n    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05); }\n    .signup-view-container .signup-panel h2 {\n      color: #41B486;\n      padding-bottom: 1em; }\n    .signup-view-container .signup-panel input {\n      padding-left: 50px;\n      height: 2.5em;\n      width: 80%;\n      border: 1px solid #cbcbd2;\n      border-radius: 4px;\n      box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.4);\n      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }\n      .signup-view-container .signup-panel input:focus {\n        box-shadow: inset 0 1px 2px rgba(203, 203, 210, 0.2), 0 0 4px rgba(121, 88, 159, 0.3);\n        border-color: #41B486; }\n    .signup-view-container .signup-panel img {\n      width: 1.2em;\n      position: relative;\n      right: 8.8em;\n      top: 2.2em; }\n    .signup-view-container .signup-panel button {\n      background: #41B486;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      width: 95%;\n      padding: 12px 16px;\n      margin-top: 25px; }\n  .signup-view-container .login-footer {\n    background-color: #f5f5f5;\n    border-top: 1px solid #ddd;\n    border-bottom-right-radius: 8px;\n    border-bottom-left-radius: 8px;\n    border-top-right-radius: 0px;\n    border-top-left-radius: 0px;\n    width: 100%;\n    max-width: 350px;\n    margin: 0 auto 0 auto;\n    text-align: center;\n    padding: 0.5em 2em 0.5em 2em; }\n    .signup-view-container .login-footer p {\n      display: inline-block;\n      padding-right: 1em;\n      color: #878797; }\n    .signup-view-container .login-footer a {\n      color: #41B486; }\n", ""]);
 
 	// exports
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import * as actions from '../../actions';
 import './signup-view.scss';
 
@@ -31,14 +32,34 @@ class SignupView extends Component {
 
     return (
       <div className="signup-view-container">
-        <form onSubmit={handleSubmit(data => {signupUser(data)})}>
-            <Field name="email" type="email" component={renderField} label="Email"/>
-            <Field name="password" type="password" component={renderField} label="Password"/>
-            <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
-          {error && <strong>{error}</strong>}
-          {this.renderAlert()}
-          <button type="submit" disabled={submitting}>Sign up!</button>
-        </form>
+        <div className="gomocha-logo">
+          <Link to="/">
+            <img src="./img/gomocha-io-white.png" alt="GoMocha logo" />
+          </Link>
+        </div>
+        <div className="signup-panel">
+          <h2>Sign up with us!</h2>
+          <form onSubmit={handleSubmit(data => {signupUser(data)})}>
+            <div>
+              <img src="./img/user-icon.png" alt="user"/>
+              <Field name="email" type="email" component={renderField} label="Email"/>
+            </div>
+            <div>
+              <img src="./img/password-icon.png" alt="password"/>
+              <Field name="password" type="password" component={renderField} label="Password"/>
+            </div>
+            <div>
+              <img src="./img/password-icon.png" alt="password"/>
+              <Field name="passwordConfirm" type="password" component={renderField} label="Confirm password"/>
+            </div>
+            {error && <strong>{error}</strong>}
+            {this.renderAlert()}
+            <button type="submit" disabled={submitting}>Sign up!</button>
+          </form>
+        </div>
+        <div className="login-footer">
+            <p>Already have a GoMocha.io account?</p><Link to="/login">Log in</Link>
+        </div>
       </div>
     );
   }
