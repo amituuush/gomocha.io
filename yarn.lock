@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+Base64@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/Base64/-/Base64-1.0.0.tgz#b6b73ee342ce64bf66d6003a4536683bf8a349b5"
+
 abbrev@1:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
@@ -2816,6 +2820,13 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+ldclient-js@^1.1.4:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/ldclient-js/-/ldclient-js-1.1.8.tgz#2aa21d1836615305f7dc328b6d9b0739c3254ebc"
+  dependencies:
+    Base64 "1.0.0"
+    escape-string-regexp "1.0.5"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
@@ -4014,6 +4025,12 @@ rc@^1.0.1, rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
+react-broadcast@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.1.2.tgz#950de63578a2af399a396067a617af7402182330"
+  dependencies:
+    invariant "^2.2.1"
+
 react-countdown-timer@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-countdown-timer/-/react-countdown-timer-1.0.3.tgz#1584038d77f71517712b9cf18d10577deec9e24b"
@@ -4023,6 +4040,13 @@ react-countdown-timer@^1.0.3:
 react-dom@^0.14.6, react-dom@^0.14.7:
   version "0.14.8"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.14.8.tgz#0f1c547514263f771bd31814a739e5306575069e"
+
+react-launch-darkly@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/react-launch-darkly/-/react-launch-darkly-0.0.8.tgz#02c0c5459d773055cfcf1082535edea78caf99c1"
+  dependencies:
+    ldclient-js "^1.1.4"
+    react-broadcast "^0.1.2"
 
 react-number-count-down@^1.0.5:
   version "1.0.5"

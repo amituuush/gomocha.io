@@ -27565,7 +27565,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _App = __webpack_require__(259);
+	var _App = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/App/App\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -27608,77 +27608,9 @@
 	module.exports = Routes;
 
 /***/ },
-/* 259 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(197);
-
-	__webpack_require__(260);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var App = _react2.default.createClass({
-	    displayName: 'App',
-
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            this.props.children
-	        );
-	    }
-	});
-
-	module.exports = App;
-
-/***/ },
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(261);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(263)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./app.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./app.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 261 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(262)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".nav-container {\n  width: 100%;\n  height: 3em;\n  background: #40B284;\n  text-align: center;\n  padding-top: 1em; }\n  .nav-container .nav-icons {\n    width: 20em;\n    margin: 0 auto; }\n    .nav-container .nav-icons .fa-history, .nav-container .nav-icons .fa-tachometer {\n      text-align: center;\n      color: #fff; }\n      .nav-container .nav-icons .fa-history:hover, .nav-container .nav-icons .fa-tachometer:hover {\n        color: #efefef;\n        cursor: pointer; }\n    .nav-container .nav-icons .fa-tachometer {\n      padding-right: 1em; }\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 259 */,
+/* 260 */,
+/* 261 */,
 /* 262 */
 /***/ function(module, exports) {
 
