@@ -5,6 +5,15 @@ import { Link } from 'react-router';
 import './login-view.scss';
 import * as actions from '../../actions';
 
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+);
+
 class LoginView extends Component {
   handleFormSubmit({ email, password }) {
     console.log(email, password);
@@ -23,7 +32,7 @@ class LoginView extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
+    const { handleSubmit, fields: { email, password }} = this.props;
 
     return (
       <div className="login-view-container">

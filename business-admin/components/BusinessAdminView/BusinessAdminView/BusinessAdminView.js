@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchOrders, completeOrder } from '../../../actions';
 import { fetchMessage } from '../../../actions/auth';
 import { bindActionCreators } from 'redux';
+import { FeatureFlag } from 'react-launch-darkly';
 
 var BusinessAdminView = React.createClass({
 
@@ -23,11 +24,21 @@ var BusinessAdminView = React.createClass({
     setInterval(this.props.fetchOrders, 5000)
   },
 
+  renderFeature() {
+    return (
+      <input type="text" name="" value="" />
+    );
+  },
+
   render: function() {
       return (
         <div className="ba-view-container">
           <div className='ba-view-wrap'>
             <h1>Today's Orders</h1>
+            <FeatureFlag
+              flagKey="lyst-new-feature"
+              renderFeatureCallback={this.renderFeature}
+            />
             <OrdersContainer
             orders={this.props.orders}
             completeOrder={this.props.completeOrder} />
