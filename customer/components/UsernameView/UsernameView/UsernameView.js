@@ -33,15 +33,7 @@ var UsernameView = React.createClass({
           <div className="title-cover-right">
             <div className="title-cover-right-child">
               <h1>Skip the morning coffee line. Order on your phone.</h1>
-              <form>
-                <input
-                  type="text"
-                  placeholder="What's your name?"
-                  name="username"
-                  ref={(c) => this._usernameInput = c}
-                  required />
-                <button>Go!</button>
-              </form>
+                <Link to="/login"><button>Go!</button></Link>
             </div>
           </div>
         </div>
@@ -60,7 +52,7 @@ var UsernameView = React.createClass({
             <h2>Ready when you arrive!</h2>
           </div>
         </div>
-        <div className="landing-icon-button"><button>Get Started!</button></div>
+        <div className="landing-icon-button"><Link to="/signup"><button>Get Started!</button></Link></div>
         <div className="company-logo-container">
           <h2>As Used By</h2>
           <img src="img/starbucks.png" />

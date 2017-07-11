@@ -42928,7 +42928,6 @@
 	    },
 
 	    _handleCompleteOrder: function _handleCompleteOrder() {
-	        console.log('completing order');
 	        this.props.completeOrder(this.props.order._id);
 	    },
 

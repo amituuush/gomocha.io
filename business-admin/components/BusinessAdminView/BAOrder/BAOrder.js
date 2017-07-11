@@ -33,7 +33,6 @@ var BAOrder = React.createClass({
 
 
     _handleCompleteOrder: function() {
-        console.log('completing order');
         this.props.completeOrder(this.props.order._id);
     },
 

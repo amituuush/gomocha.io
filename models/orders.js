@@ -10,10 +10,7 @@ const orderSchema = mongoose.Schema({
     favorited: Boolean,
     date: String,
     time: String,
-    timeUntilArrival: String,
-    secondsUntilArrival: Number,
-    timeSelectedForPickup: String,
-    expectedPickupTime: String,
+    selectedPickupTime: String,
     completed: Boolean
 });
 

@@ -65,28 +65,6 @@
       text-align: center;
     }
 
-    form {
-      text-align: center;
-    }
-
-    input[type="text"] {
-      width: 12em;
-      text-align: center;
-      font-size: 1.5em;
-      height: 1.5em;
-      border-radius: 5px;
-      border: 1px solid #41b486;
-      margin: .5em auto 0;
-      outline: none;
-      padding: .75em;
-      box-shadow: 0px 0px 10px #459e7b;
-
-
-      &:focus {
-        background: #F5FAFF;
-      }
-    }
-
     button {
       display: block;
       width: 8em;
@@ -98,6 +76,10 @@
       color: #fff;
       border: 2px solid #fff;
       font-size: 1.7em;
+
+      a {
+        color: #fff;
+      }
 
       &:hover {
         background: #43BB8B;
