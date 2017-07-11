@@ -10,14 +10,17 @@ class Navbar extends Component {
       return (
       <div>
         <nav className="top-nav">
-          <div
-            className="menu-bars"
+          <div className="menu-bars"
             onClick={() => {this.props.menuToggle()}}>
             <i className={this.props.menuShow ? 'fa fa-times fa-2x' : 'fa fa-bars fa-2x'} aria-hidden="true"></i>
           </div>
-            <div className="top-nav-logo">
-              <img src="/img/gomocha-logo-sml.png" />
-            </div>
+          <div className="top-nav-logo">
+            <img src="/img/gomocha-logo-sml.png" />
+          </div>
+          <div className="shopping-cart">
+            <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            <p>{this.props.items.length}</p>
+          </div>
           <ul className={this.props.menuShow ? 'menu-show' : 'menu-hide'}>
             <Link to="/dashboard" onlyActiveOnIndex={true} className='router-link'>
               <li onClick={() => {this.props.menuToggle()}}>Dashboard</li>

@@ -29,6 +29,31 @@
         }
     }
 
+    .shopping-cart {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .fa-shopping-cart {
+        color: #40B285;
+        margin: 0.5em 0.4em 0.5em 0.5em;
+
+        &:hover {
+          color: lighten(#40B285, 10%);
+          cursor: pointer;
+        }
+      }
+
+      p {
+        display: inline-block;
+        margin-right: 1em;
+        font-size: 1em;
+        color: #efefef;
+        position: relative;
+        bottom: 5px
+      }
+    }
+
     .menu-show {
         width: 100%;
         background: #3E474F;

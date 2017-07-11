@@ -48,10 +48,9 @@ var CustomOrderView = React.createClass({
         return (
             <div className="custom-order-container">
                 <div className="title-cover">
-                    <h1>Place Your Order</h1>
-                    <div className="userProgress">
-                        <div id="twoOfFive"></div>
-                    </div>
+                    <h1>Restaurant Name/Logo</h1>
+                    <p>Hours of Operation</p>
+                    <p>123 Union Street</p>
                 </div>
                 <div className="custom-order-view-wrap">
                     <AddItemNotification

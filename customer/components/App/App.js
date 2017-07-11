@@ -42,7 +42,6 @@ var App = React.createClass({
       methodOfTrans: '',
       methodOfTransShow: true,
       pickupTime: true,
-      expectedPickupTime: '',
       favorite: false,
       paymentInfo: {
         nameOnCard: '',
@@ -63,31 +62,6 @@ var App = React.createClass({
     api.getLocation(this._handleUserLocation, this._handleGetLocation);
     // this._handleUsernameCheck();
   },
-
-  // -------------- USERNAME VALIDATION --------------
-
-  // _handleUsernameCheck: function() {
-  //   var usernameCookie = cookie.get('username');
-  //   usernameCookie ? this._handleUsernameState(usernameCookie)
-  //   : '' // if there is a cookie, set it to the state, if not, do nothing
-  // },
-
-  // _handleUsernameState: function(usernameCookie) {
-  //   this.setState({
-  //     username: usernameCookie
-  //   })
-  // },
-
-  // _handleUsername: function(username) {
-  //   username ? cookie.set('username', username)
-  //   : ''
-  //   this._handleUsernameState(username);
-  // },
-
-  // _handleUsernameRemove: function() {
-  //   cookie.remove('username');
-  //   location.reload();
-  // },
 
   // --------------USER LOCATION AND GOOGLE MAPS API CALL--------------
 
@@ -540,6 +514,7 @@ var App = React.createClass({
     return (
       <div>
         <Navbar
+          items={this.state.items}
           menuShow={this.state.menuShow}
           menuToggle={this._handleMenuToggle}
         />
