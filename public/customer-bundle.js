@@ -63764,7 +63764,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    { className: 'footer-copyright' },
-	                    '\xA92016 GoMocha, Inc.'
+	                    '\xA92017 GoMocha, Inc.'
 	                )
 	            )
 	        );

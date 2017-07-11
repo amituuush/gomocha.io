@@ -20,7 +20,7 @@ var Footer = React.createClass({
                     <p className="footer-text">GoMocha Blog</p>
                     <p className="footer-text">Privacy Policy</p>
                     <p className="footer-text">Terms and Conditions</p>
-                    <p className="footer-copyright">©2016 GoMocha, Inc.</p>
+                    <p className="footer-copyright">©2017 GoMocha, Inc.</p>
                 </div>
             </div>
         )
