@@ -26,7 +26,40 @@
     }
 
     .order-total-container {
+        position: fixed;
+        top: 64px;
+        right: 0px;
+        width: 94%;
+        height: 100%;
         text-align: center;
+        background: #fff;
+        border: 1px solid #999999;
+        padding: 1em;
+        border-radius: 3px;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+        z-index: 9999;
+    }
+
+    .order-total-container-active {
+      display: none;
+    }
+
+    .checkout-modal {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      text-align: center;
+      padding-bottom: 1em;
+      border-top: 1px solid #999999;
+    }
+
+    .checkout-modal-hide {
+      display: none;
     }
 
 }

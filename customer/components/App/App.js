@@ -27,6 +27,7 @@ var App = React.createClass({
         lat: '',
         lng: ''
       },
+      shoppingCartShow: false,
       distance: '',
       duration: '',
       durationSeconds: undefined,
@@ -463,6 +464,12 @@ var App = React.createClass({
     });
   },
 
+  _handleShoppingCartToggle: function() {
+    this.setState({
+      shoppingCartShow: !this.state.shoppingCartShow
+    });
+  },
+
   render: function() {
     var childrenWithProps = React.Children.map(this.props.children,
     (child) => React.cloneElement(child, {
@@ -474,6 +481,8 @@ var App = React.createClass({
         selectedShop: this.state.selectedShop,
         items: this.state.items,
         handleSelectedShop: this._handleSelectedShop,
+        shoppingCartShow: this.state.shoppingCartShow,
+        handleShoppingCartToggle: this._handleShoppingCartToggle,
         distance: this.state.distance,
         duration: this.state.duration,
         handleSpecialInstructions: this._handleSpecialInstructions,
@@ -517,6 +526,8 @@ var App = React.createClass({
           items={this.state.items}
           menuShow={this.state.menuShow}
           menuToggle={this._handleMenuToggle}
+          shoppingCartShow={this.state.shoppingCartShow}
+          handleShoppingCartToggle={this._handleShoppingCartToggle}
         />
           {childrenWithProps}
       </div>

@@ -25,6 +25,8 @@ var CustomOrderView = React.createClass({
         toggleDeleteNotification: React.PropTypes.func,
         toggleErrorNotification: React.PropTypes.func,
         toggleFormNotification: React.PropTypes.func,
+        shoppingCarShow: React.PropTypes.bool,
+        handlShoppingCartToggle: React.PropTypes.func
     },
 
     render: function() {
@@ -32,7 +34,7 @@ var CustomOrderView = React.createClass({
         if (this.props.items.length > 0) {
             nextButton = <Link to="/additional-info">
                             <button className="next-button">
-                                Next
+                                Checkout
                                 <i className="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
                             </button>
                         </Link>
@@ -40,7 +42,7 @@ var CustomOrderView = React.createClass({
             nextButton = <button
                             onClick={this.props.toggleFormNotification}
                             className="next-button">
-                            Next
+                            Checkout
                             <i className="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
                         </button>
         }
@@ -64,7 +66,7 @@ var CustomOrderView = React.createClass({
                                 toggleErrorNotification={this.props.toggleErrorNotification} />
 
                     </div>
-                    <div className="order-total-container">
+                    <div className={this.props.shoppingCartShow ? "order-total-container" : "order-total-container order-total-container-active"}>
                          <OrderTotal
                              orderItems={this.props.items}
                              handleDeleteItemFromOrder={this.props.handleDeleteItemFromOrder}
@@ -75,6 +77,14 @@ var CustomOrderView = React.createClass({
                     </div>
                  </div>
                  <Footer />
+                 <div className={this.props.items.length > 0 && !this.props.shoppingCartShow ? "checkout-modal" : "checkout-modal-hide"}>
+                    <Link to="/additional-info">
+                      <button className="next-button">
+                          Checkout
+                          <i className="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
+                      </button>
+                    </Link>
+                 </div>
              </div>
         )
     }

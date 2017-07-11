@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+const propTypes = {
+  items: React.PropTypes.array,
+  menuShow: React.PropTypes.bool,
+  menuToggle: React.PropTypes.func,
+  handleShoppingCartToggle: React.PropTypes.func,
+};
+
 class Navbar extends Component {
 
   render() {
@@ -17,7 +24,7 @@ class Navbar extends Component {
           <div className="top-nav-logo">
             <img src="/img/gomocha-logo-sml.png" />
           </div>
-          <div className="shopping-cart">
+          <div className="shopping-cart" onClick={this.props.handleShoppingCartToggle}>
             <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
             <p>{this.props.items.length}</p>
           </div>
@@ -63,6 +70,8 @@ class Navbar extends Component {
     }
   }
 }
+
+Navbar.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {

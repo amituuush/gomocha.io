@@ -27762,6 +27762,7 @@
 	        lat: '',
 	        lng: ''
 	      },
+	      shoppingCartShow: false,
 	      distance: '',
 	      duration: '',
 	      durationSeconds: undefined,
@@ -28172,6 +28173,12 @@
 	    });
 	  },
 
+	  _handleShoppingCartToggle: function _handleShoppingCartToggle() {
+	    this.setState({
+	      shoppingCartShow: !this.state.shoppingCartShow
+	    });
+	  },
+
 	  render: function render() {
 	    var _this9 = this;
 
@@ -28185,6 +28192,8 @@
 	        selectedShop: _this9.state.selectedShop,
 	        items: _this9.state.items,
 	        handleSelectedShop: _this9._handleSelectedShop,
+	        shoppingCartShow: _this9.state.shoppingCartShow,
+	        handleShoppingCartToggle: _this9._handleShoppingCartToggle,
 	        distance: _this9.state.distance,
 	        duration: _this9.state.duration,
 	        handleSpecialInstructions: _this9._handleSpecialInstructions,
@@ -28228,7 +28237,9 @@
 	      _react2.default.createElement(_Navbar2.default, {
 	        items: this.state.items,
 	        menuShow: this.state.menuShow,
-	        menuToggle: this._handleMenuToggle
+	        menuToggle: this._handleMenuToggle,
+	        shoppingCartShow: this.state.shoppingCartShow,
+	        handleShoppingCartToggle: this._handleShoppingCartToggle
 	      }),
 	      childrenWithProps
 	    );
@@ -63947,6 +63958,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var propTypes = {
+	  items: _react2.default.PropTypes.array,
+	  menuShow: _react2.default.PropTypes.bool,
+	  menuToggle: _react2.default.PropTypes.func,
+	  handleShoppingCartToggle: _react2.default.PropTypes.func
+	};
+
 	var Navbar = function (_Component) {
 	  _inherits(Navbar, _Component);
 
@@ -63983,7 +64001,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'shopping-cart' },
+	              { className: 'shopping-cart', onClick: this.props.handleShoppingCartToggle },
 	              _react2.default.createElement('i', { className: 'fa fa-shopping-cart fa-2x', 'aria-hidden': 'true' }),
 	              _react2.default.createElement(
 	                'p',
@@ -64083,6 +64101,8 @@
 
 	  return Navbar;
 	}(_react.Component);
+
+	Navbar.propTypes = propTypes;
 
 	function mapStateToProps(state) {
 	  return {
@@ -66021,7 +66041,9 @@
 	        toggleAddNotification: _react2.default.PropTypes.func,
 	        toggleDeleteNotification: _react2.default.PropTypes.func,
 	        toggleErrorNotification: _react2.default.PropTypes.func,
-	        toggleFormNotification: _react2.default.PropTypes.func
+	        toggleFormNotification: _react2.default.PropTypes.func,
+	        shoppingCarShow: _react2.default.PropTypes.bool,
+	        handlShoppingCartToggle: _react2.default.PropTypes.func
 	    },
 
 	    render: function render() {
@@ -66033,7 +66055,7 @@
 	                _react2.default.createElement(
 	                    'button',
 	                    { className: 'next-button' },
-	                    'Next',
+	                    'Checkout',
 	                    _react2.default.createElement('i', { className: 'fa fa-arrow-right fa-lg', 'aria-hidden': 'true' })
 	                )
 	            );
@@ -66043,7 +66065,7 @@
 	                {
 	                    onClick: this.props.toggleFormNotification,
 	                    className: 'next-button' },
-	                'Next',
+	                'Checkout',
 	                _react2.default.createElement('i', { className: 'fa fa-arrow-right fa-lg', 'aria-hidden': 'true' })
 	            );
 	        }
@@ -66087,7 +66109,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'order-total-container' },
+	                    { className: this.props.shoppingCartShow ? "order-total-container" : "order-total-container order-total-container-active" },
 	                    _react2.default.createElement(_OrderTotal2.default, {
 	                        orderItems: this.props.items,
 	                        handleDeleteItemFromOrder: this.props.handleDeleteItemFromOrder,
@@ -66097,7 +66119,21 @@
 	                    nextButton
 	                )
 	            ),
-	            _react2.default.createElement(_Footer2.default, null)
+	            _react2.default.createElement(_Footer2.default, null),
+	            _react2.default.createElement(
+	                'div',
+	                { className: this.props.items.length > 0 && !this.props.shoppingCartShow ? "checkout-modal" : "checkout-modal-hide" },
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/additional-info' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: 'next-button' },
+	                        'Checkout',
+	                        _react2.default.createElement('i', { className: 'fa fa-arrow-right fa-lg', 'aria-hidden': 'true' })
+	                    )
+	                )
+	            )
 	        );
 	    }
 	});
@@ -67475,7 +67511,7 @@
 
 
 	// module
-	exports.push([module.id, ".custom-order-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n  .custom-order-container .custom-order-view-wrap {\n    margin-bottom: 3em; }\n  .custom-order-container .userProgress {\n    position: relative;\n    width: 100%;\n    height: 30px;\n    background-color: #fff;\n    border-radius: 5px;\n    margin: 0 auto;\n    border: 1px solid #E4E4E4; }\n  .custom-order-container #twoOfFive {\n    position: absolute;\n    width: 40%;\n    height: 100%;\n    background: #3FB083;\n    border-radius: 5px 0px 0px 5px; }\n  .custom-order-container .order-total-container {\n    text-align: center; }\n\n@media only screen and (min-width: 600px) {\n  .custom-order-container .userProgress {\n    width: 25em; } }\n\n@media only screen and (min-width: 750px) {\n  .custom-order-container {\n    margin-left: 2.5em; }\n    .custom-order-container .custom-order-view-wrap {\n      position: relative;\n      width: 100%; }\n      .custom-order-container .custom-order-view-wrap .menu-form-container {\n        float: left; }\n      .custom-order-container .custom-order-view-wrap .order-total-container {\n        position: fixed;\n        right: 1em;\n        width: 18em; } }\n\n@media only screen and (min-width: 960px) {\n  .custom-order-container {\n    margin-top: 0em;\n    margin-left: 5em; } }\n", ""]);
+	exports.push([module.id, ".custom-order-container {\n  margin-left: 0em;\n  margin-top: 4em;\n  padding-right: 0.4em; }\n  .custom-order-container .custom-order-view-wrap {\n    margin-bottom: 3em; }\n  .custom-order-container .userProgress {\n    position: relative;\n    width: 100%;\n    height: 30px;\n    background-color: #fff;\n    border-radius: 5px;\n    margin: 0 auto;\n    border: 1px solid #E4E4E4; }\n  .custom-order-container #twoOfFive {\n    position: absolute;\n    width: 40%;\n    height: 100%;\n    background: #3FB083;\n    border-radius: 5px 0px 0px 5px; }\n  .custom-order-container .order-total-container {\n    position: fixed;\n    top: 64px;\n    right: 0px;\n    width: 94%;\n    height: 100%;\n    text-align: center;\n    background: #fff;\n    border: 1px solid #999999;\n    padding: 1em;\n    border-radius: 3px;\n    -webkit-transition: all 1s ease;\n    -moz-transition: all 1s ease;\n    -o-transition: all 1s ease;\n    -ms-transition: all 1s ease;\n    transition: all 1s ease;\n    z-index: 9999; }\n  .custom-order-container .order-total-container-active {\n    display: none; }\n  .custom-order-container .checkout-modal {\n    position: fixed;\n    bottom: 0;\n    width: 100%;\n    background: #fff;\n    text-align: center;\n    padding-bottom: 1em;\n    border-top: 1px solid #999999; }\n  .custom-order-container .checkout-modal-hide {\n    display: none; }\n\n@media only screen and (min-width: 600px) {\n  .custom-order-container .userProgress {\n    width: 25em; } }\n\n@media only screen and (min-width: 750px) {\n  .custom-order-container {\n    margin-left: 2.5em; }\n    .custom-order-container .custom-order-view-wrap {\n      position: relative;\n      width: 100%; }\n      .custom-order-container .custom-order-view-wrap .menu-form-container {\n        float: left; }\n      .custom-order-container .custom-order-view-wrap .order-total-container {\n        position: fixed;\n        right: 1em;\n        width: 18em; } }\n\n@media only screen and (min-width: 960px) {\n  .custom-order-container {\n    margin-top: 0em;\n    margin-left: 5em; } }\n", ""]);
 
 	// exports
 
