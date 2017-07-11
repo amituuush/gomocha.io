@@ -148,6 +148,27 @@
         }
     }
 
+    .shopping-cart {
+      display: inline-block;
+
+      .fa-shopping-cart {
+        color: #40B285;
+        margin: 0.5em 0.4em 0.5em 0.5em;
+
+        &:hover {
+          color: lighten(#40B285, 10%);
+          cursor: pointer;
+        }
+      }
+
+      p {
+        display: inline-block;
+        font-size: 1em;
+        color: #efefef;
+        position: relative;
+        bottom: 5px
+      }
+    }
     .fa-sign-out {
         margin-top: 7em;
     }

@@ -59,6 +59,10 @@ class Navbar extends Component {
             <i className="fa fa-heart fa-2x"></i>
           </Link>
           <div className="side-nav-divider"></div>
+          <div className="shopping-cart" onClick={this.props.handleShoppingCartToggle}>
+            <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            <p>{this.props.items.length}</p>
+          </div>
           <Link to="/logout" className='router-link'><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i></Link>
         </nav>
       </div>
