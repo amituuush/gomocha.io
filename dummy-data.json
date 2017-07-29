@@ -7,7 +7,7 @@
             "imageUrl": "http://www.fodors.com/ee/files/slideshows/9-colectivo-coffee.jpg",
             "menu": [
                 {
-                    "displayName": "Hot Drinks",
+                    "sectionTitle": "Hot Drinks",
                     "slug": "hot-drinks",
                     "items": [
                         {
@@ -44,7 +44,7 @@
                 },
 
                 {
-                    "displayName": "Cold Drinks",
+                    "sectionTitle": "Cold Drinks",
                     "slug": "cold-drinks",
                     "items": [
                         {
@@ -81,7 +81,7 @@
                 },
 
                 {
-                    "displayName": "Tea",
+                    "sectionTitle": "Tea",
                     "slug": "tea",
                     "items": [
                         {
@@ -118,7 +118,7 @@
                 },
 
                 {
-                    "displayName": "Bakery",
+                    "sectionTitle": "Bakery",
                     "slug": "bakery",
                     "items": [
                         {

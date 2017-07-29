@@ -1,47 +1,53 @@
-import React from 'react'
-import MenuSection from '../MenuSection/MenuSection'
-import sass from './menu-form-container.scss'
+import React, { Component } from 'react';
+import MenuSection from '../MenuSection/MenuSection';
+import sass from './menu-form-container.scss';
 
-var MenuFormContainer = React.createClass({
+export default class MenuFormContainer extends Component {
 
-    propTypes: {
-        data: React.PropTypes.object,
-        handleAddItemToOrder: React.PropTypes.func,
-        toggleAddNotification: React.PropTypes.func,
-        toggleErrorNotification: React.PropTypes.func,
-        handleSpecialInstructions: React.PropTypes.func
-    },
+  constructor(props) {
+    super(props);
 
-    render: function() {
-        return (
-            <form>
-                <MenuSection
-                    data={this.props.data}
-                    slug="hot-drinks"
-                    handleAddItemToOrder={this.props.handleAddItemToOrder}
-                    toggleAddNotification={this.props.toggleAddNotification}
-                    toggleErrorNotification={this.props.toggleErrorNotification} />
-                <MenuSection
-                    data={this.props.data}
-                    slug="cold-drinks"
-                    handleAddItemToOrder={this.props.handleAddItemToOrder}
-                    toggleAddNotification={this.props.toggleAddNotification}
-                    toggleErrorNotification={this.props.toggleErrorNotification} />
-                <MenuSection
-                    data={this.props.data}
-                    slug="tea"
-                    handleAddItemToOrder={this.props.handleAddItemToOrder}
-                    toggleAddNotification={this.props.toggleAddNotification}
-                    toggleErrorNotification={this.props.toggleErrorNotification} />
-                <MenuSection
-                    data={this.props.data}
-                    slug="bakery"
-                    handleAddItemToOrder={this.props.handleAddItemToOrder}
-                    toggleAddNotification={this.props.toggleAddNotification}
-                    toggleErrorNotification={this.props.toggleErrorNotification} />
-            </form>
-        )
-    }
-});
+    this.state = {
+      menuSectionShowing: ''
+    };
 
-module.exports = MenuFormContainer;
+    this.handleMenuSectionShow = this.handleMenuSectionShow.bind(this);
+  }
+
+  handleMenuSectionShow(menuSection) {
+    this.setState({
+      menuSectionShowing: menuSection
+    });
+  }
+
+  render() {
+
+    const menuSections = this.props.data.shops[0].menu.map((menuSection) => {
+      return (
+        <MenuSection
+          menuSection={menuSection}
+          slug={menuSection.slug}
+          key={menuSection.slug}
+          menuSectionShowing={this.state.menuSectionShowing}
+          handleMenuSectionShow={this.handleMenuSectionShow}
+          handleAddItemToOrder={this.props.handleAddItemToOrder}
+          toggleAddNotification={this.props.toggleAddNotification}
+          toggleErrorNotification={this.props.toggleErrorNotification} />
+      );
+    });
+
+    return (
+      <form>
+        {menuSections}
+      </form>
+    );
+  }
+};
+
+MenuFormContainer.propTypes = {
+    data: React.PropTypes.object,
+    handleAddItemToOrder: React.PropTypes.func,
+    toggleAddNotification: React.PropTypes.func,
+    toggleErrorNotification: React.PropTypes.func,
+    handleSpecialInstructions: React.PropTypes.func
+};

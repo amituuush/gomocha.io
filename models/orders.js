@@ -17,3 +17,11 @@ const orderSchema = mongoose.Schema({
 const Orders = mongoose.model('Order', orderSchema);
 
 module.exports = Orders;
+
+/*
+
+admin roles -> restaurant Model -> subschema/document(menu)
+
+embedded vs references/relations
+
+*/

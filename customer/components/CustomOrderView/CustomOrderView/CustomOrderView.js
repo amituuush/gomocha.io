@@ -1,12 +1,12 @@
-import React from 'react'
-import MenuFormContainer from '../MenuFormContainer/MenuFormContainer'
-import OrderTotal from '../OrderTotal/OrderTotal'
-import AddItemNotification from '../AddItemNotification/AddItemNotification'
-import SpecialInstructions from '../SpecialInstructions/SpecialInstructions'
-import Footer from '../../DashboardView/Footer/Footer'
-import { Link } from 'react-router'
-import sass from '../../App/app.scss'
-import sass2 from './custom-order-view.scss'
+import React from 'react';
+import MenuFormContainer from '../MenuFormContainer/MenuFormContainer';
+import OrderTotal from '../OrderTotal/OrderTotal';
+import AddItemNotification from '../AddItemNotification/AddItemNotification';
+import SpecialInstructions from '../SpecialInstructions/SpecialInstructions';
+import Footer from '../../DashboardView/Footer/Footer';
+import { Link } from 'react-router';
+import sass from '../../App/app.scss';
+import sass2 from './custom-order-view.scss';
 
 var CustomOrderView = React.createClass({
 

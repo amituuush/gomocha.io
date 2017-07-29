@@ -1,12 +1,13 @@
-import React from 'react'
-import AddToOrderButton from '../Options/AddToOrderButton'
-import MilkType from '../Options/MilkType'
-import Size from '../Options/Size'
-import Quantity from '../Options/Quantity'
-import Decaf from '../Options/Decaf'
-import HotOrCold from '../Options/HotOrCold'
-import sass from './menu-item.scss'
-import _ from 'lodash'
+
+import React from 'react';
+import AddToOrderButton from '../Options/AddToOrderButton';
+import MilkType from '../Options/MilkType';
+import Size from '../Options/Size';
+import Quantity from '../Options/Quantity';
+import Decaf from '../Options/Decaf';
+import HotOrCold from '../Options/HotOrCold';
+import sass from './menu-item.scss';
+import _ from 'lodash';
 
 var MenuItem = React.createClass({
 
@@ -119,6 +120,7 @@ var MenuItem = React.createClass({
 
                     {/* AddToOrderButton */}
                 </div>
+
 
                 <div className="item-top-row">
 
