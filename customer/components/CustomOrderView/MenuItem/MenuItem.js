@@ -22,10 +22,6 @@ var MenuItem = React.createClass({
         toggleErrorNotification: React.PropTypes.func
     },
 
-    getInitialState: function() {
-        return {}
-    },
-
     _checkFormComplete: function() {
         var requiredOptions = this.props.options.filter(function(option){
             return option !== 'decaf'
@@ -118,35 +114,35 @@ var MenuItem = React.createClass({
                 <div className="item-name-wrap">
                     <div className="item-name"><label htmlFor="hot-drink">{this.props.itemName}</label></div>
 
-                    {/* AddToOrderButton */}
-                </div>
-
-
-                <div className="item-top-row">
-
-                    <div className="item-options">
-                        {/* MilkType - Size - Quantity */}
-                        {this.props.options.map(this._renderOption)}
-
-                    </div>
                     {/* Price */}
                     <div className="item-price">
                         ${this.props.price.toFixed(2)}
                     </div>
                 </div>
 
-                {/* Decaf - HotOrCold */}
-                <div className="item-other-options">
-                {this.props.options.map(this._renderOption2)}
-                    <AddToOrderButton
-                        handleAddItemToOrder={this._handleAddItemToOrder}
-                        handleItemFormComplete={this._handleItemFormComplete}
-                        toggleAddNotification={this.props.toggleAddNotification}
-                        toggleErrorNotification={this.props.toggleErrorNotification}
-                        checkFormComplete={this._checkFormComplete}
-                        itemName={this.props.itemName}
-                        price={this.props.price}
-                        itemDetails={this.state} />
+                <div className="item-modal">
+                  <div className="item-top-row">
+
+                      <div className="item-options">
+
+                          {/* MilkType - Size - Quantity */}
+                          {this.props.options.map(this._renderOption)}
+                      </div>
+                  </div>
+
+                  {/* Decaf - HotOrCold */}
+                  <div className="item-other-options">
+                  {this.props.options.map(this._renderOption2)}
+                      <AddToOrderButton
+                          handleAddItemToOrder={this._handleAddItemToOrder}
+                          handleItemFormComplete={this._handleItemFormComplete}
+                          toggleAddNotification={this.props.toggleAddNotification}
+                          toggleErrorNotification={this.props.toggleErrorNotification}
+                          checkFormComplete={this._checkFormComplete}
+                          itemName={this.props.itemName}
+                          price={this.props.price}
+                          itemDetails={this.state} />
+                  </div>
                 </div>
             </div>
         )

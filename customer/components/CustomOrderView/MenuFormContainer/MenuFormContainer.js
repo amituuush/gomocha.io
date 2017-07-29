@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MenuSection from '../MenuSection/MenuSection';
-import sass from './menu-form-container.scss';
+import './menu-form-container.scss';
 
 export default class MenuFormContainer extends Component {
 
@@ -8,16 +8,23 @@ export default class MenuFormContainer extends Component {
     super(props);
 
     this.state = {
-      menuSectionShowing: ''
+      menuShowing: ''
     };
 
-    this.handleMenuSectionShow = this.handleMenuSectionShow.bind(this);
+    this.handleMenuShow = this.handleMenuShow.bind(this);
+    this.handleBackButton = this.handleBackButton.bind(this);
   }
 
-  handleMenuSectionShow(menuSection) {
+  handleMenuShow(menuSection) {
     this.setState({
-      menuSectionShowing: menuSection
+      menuShowing: menuSection
     });
+  }
+
+  handleBackButton() {
+    this.setState({
+      menuShowing: ''
+    })
   }
 
   render() {
@@ -28,8 +35,8 @@ export default class MenuFormContainer extends Component {
           menuSection={menuSection}
           slug={menuSection.slug}
           key={menuSection.slug}
-          menuSectionShowing={this.state.menuSectionShowing}
-          handleMenuSectionShow={this.handleMenuSectionShow}
+          menuShowing={this.state.menuShowing}
+          handleMenuShow={this.handleMenuShow}
           handleAddItemToOrder={this.props.handleAddItemToOrder}
           toggleAddNotification={this.props.toggleAddNotification}
           toggleErrorNotification={this.props.toggleErrorNotification} />
@@ -38,6 +45,7 @@ export default class MenuFormContainer extends Component {
 
     return (
       <form>
+        <i onClick={this.handleBackButton} className={this.state.menuShowing ? "fa fa-arrow-left" : "fa-arrow-hide"} aria-hidden="true"></i>
         {menuSections}
       </form>
     );

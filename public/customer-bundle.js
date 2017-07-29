@@ -66170,9 +66170,7 @@
 
 	var _MenuSection2 = _interopRequireDefault(_MenuSection);
 
-	var _menuFormContainer = __webpack_require__(724);
-
-	var _menuFormContainer2 = _interopRequireDefault(_menuFormContainer);
+	__webpack_require__(724);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66191,18 +66189,26 @@
 	    var _this = _possibleConstructorReturn(this, (MenuFormContainer.__proto__ || Object.getPrototypeOf(MenuFormContainer)).call(this, props));
 
 	    _this.state = {
-	      menuSectionShowing: ''
+	      menuShowing: ''
 	    };
 
-	    _this.handleMenuSectionShow = _this.handleMenuSectionShow.bind(_this);
+	    _this.handleMenuShow = _this.handleMenuShow.bind(_this);
+	    _this.handleBackButton = _this.handleBackButton.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(MenuFormContainer, [{
-	    key: 'handleMenuSectionShow',
-	    value: function handleMenuSectionShow(menuSection) {
+	    key: 'handleMenuShow',
+	    value: function handleMenuShow(menuSection) {
 	      this.setState({
-	        menuSectionShowing: menuSection
+	        menuShowing: menuSection
+	      });
+	    }
+	  }, {
+	    key: 'handleBackButton',
+	    value: function handleBackButton() {
+	      this.setState({
+	        menuShowing: ''
 	      });
 	    }
 	  }, {
@@ -66215,8 +66221,8 @@
 	          menuSection: menuSection,
 	          slug: menuSection.slug,
 	          key: menuSection.slug,
-	          menuSectionShowing: _this2.state.menuSectionShowing,
-	          handleMenuSectionShow: _this2.handleMenuSectionShow,
+	          menuShowing: _this2.state.menuShowing,
+	          handleMenuShow: _this2.handleMenuShow,
 	          handleAddItemToOrder: _this2.props.handleAddItemToOrder,
 	          toggleAddNotification: _this2.props.toggleAddNotification,
 	          toggleErrorNotification: _this2.props.toggleErrorNotification });
@@ -66225,6 +66231,7 @@
 	      return _react2.default.createElement(
 	        'form',
 	        null,
+	        _react2.default.createElement('i', { onClick: this.handleBackButton, className: this.state.menuShowing ? "fa fa-arrow-left" : "fa-arrow-hide", 'aria-hidden': 'true' }),
 	        menuSections
 	      );
 	    }
@@ -79896,20 +79903,21 @@
 
 	      var sectionTitle = void 0;
 
-	      if (this.props.menuSectionShowing) {
-	        if (this.props.menuSectionShowing === this.props.slug) {
+	      if (this.props.menuShowing) {
+	        if (this.props.menuShowing === this.props.slug) {
 	          sectionTitle = menuSection.sectionTitle;
 	        }
 	      } else {
 	        sectionTitle = menuSection.sectionTitle;
 	      }
 
-	      if (this.props.menuSectionShowing === this.props.slug) {
+	      if (this.props.menuShowing === this.props.slug) {
 	        menuItems = menuSection.items.map(function (item, index) {
 	          return _react2.default.createElement(_MenuItem2.default, {
 	            itemName: item.name,
 	            price: item.price,
 	            options: item.options,
+	            id: item.id,
 	            key: item.id,
 	            handleAddItemToOrder: _this2.props.handleAddItemToOrder,
 	            calculateTotalAndTax: _this2.props.calculateTotalAndTax,
@@ -79921,7 +79929,7 @@
 	      return _react2.default.createElement(
 	        'section',
 	        { onClick: function onClick() {
-	            _this2.props.handleMenuSectionShow(_this2.props.slug);
+	            _this2.props.handleMenuShow(_this2.props.slug);
 	          }, className: 'menu-section' },
 	        _react2.default.createElement(
 	          'h2',
@@ -79946,8 +79954,8 @@
 	MenuSection.propTypes = {
 	  menuSection: _react2.default.PropTypes.object,
 	  slug: _react2.default.PropTypes.string,
-	  menuSectionShowing: _react2.default.PropTypes.string,
-	  handleMenuSectionShow: _react2.default.PropTypes.func,
+	  menuShowing: _react2.default.PropTypes.string,
+	  handleMenuShow: _react2.default.PropTypes.func,
 	  handleAddItemToOrder: _react2.default.PropTypes.func,
 	  toggleAddNotification: _react2.default.PropTypes.func,
 	  toggleErrorNotification: _react2.default.PropTypes.func
@@ -80010,10 +80018,6 @@
 	        calculateTotalAndTax: _react2.default.PropTypes.func,
 	        toggleAddNotification: _react2.default.PropTypes.func,
 	        toggleErrorNotification: _react2.default.PropTypes.func
-	    },
-
-	    getInitialState: function getInitialState() {
-	        return {};
 	    },
 
 	    _checkFormComplete: function _checkFormComplete() {
@@ -80113,15 +80117,6 @@
 	                        { htmlFor: 'hot-drink' },
 	                        this.props.itemName
 	                    )
-	                )
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'item-top-row' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'item-options' },
-	                    this.props.options.map(this._renderOption)
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -80132,17 +80127,30 @@
 	            ),
 	            _react2.default.createElement(
 	                'div',
-	                { className: 'item-other-options' },
-	                this.props.options.map(this._renderOption2),
-	                _react2.default.createElement(_AddToOrderButton2.default, {
-	                    handleAddItemToOrder: this._handleAddItemToOrder,
-	                    handleItemFormComplete: this._handleItemFormComplete,
-	                    toggleAddNotification: this.props.toggleAddNotification,
-	                    toggleErrorNotification: this.props.toggleErrorNotification,
-	                    checkFormComplete: this._checkFormComplete,
-	                    itemName: this.props.itemName,
-	                    price: this.props.price,
-	                    itemDetails: this.state })
+	                { className: 'item-modal' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item-top-row' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'item-options' },
+	                        this.props.options.map(this._renderOption)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item-other-options' },
+	                    this.props.options.map(this._renderOption2),
+	                    _react2.default.createElement(_AddToOrderButton2.default, {
+	                        handleAddItemToOrder: this._handleAddItemToOrder,
+	                        handleItemFormComplete: this._handleItemFormComplete,
+	                        toggleAddNotification: this.props.toggleAddNotification,
+	                        toggleErrorNotification: this.props.toggleErrorNotification,
+	                        checkFormComplete: this._checkFormComplete,
+	                        itemName: this.props.itemName,
+	                        price: this.props.price,
+	                        itemDetails: this.state })
+	                )
 	            )
 	        );
 	    }
@@ -80661,7 +80669,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".fa-arrow-left:hover {\n  cursor: pointer; }\n\n.fa-arrow-hide {\n  display: none; }\n", ""]);
 
 	// exports
 
