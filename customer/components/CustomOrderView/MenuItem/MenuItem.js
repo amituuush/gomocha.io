@@ -12,7 +12,17 @@ export default class MenuItem extends Component {
   constructor(props) {
     super(props);
 
-    this.handleMenuShow = this.handleMenuShow.bind(this);
+    this.state = {};
+
+    this.checkFormComplete = this.checkFormComplete.bind(this);
+    this.handleMilkTypeChange = this.handleMilkTypeChange.bind(this);
+    this.handleSizeChange = this.handleSizeChange.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.handleDecafChange = this.handleDecafChange.bind(this);
+    this.handleHotOrColdChange = this.handleHotOrColdChange.bind(this);
+    this.handleAddItemToOrder = this.handleAddItemToOrder.bind(this);
+    this.renderOption = this.renderOption.bind(this);
+    this.renderOption2 = this.renderOption2.bind(this);
   }
 
   checkFormComplete() {
@@ -59,7 +69,7 @@ export default class MenuItem extends Component {
 
   handleAddItemToOrder(itemDetails) {
       this.props.handleAddItemToOrder(itemDetails);
-      this.replaceState({});
+      this.setState({});
   }
 
 
@@ -98,21 +108,13 @@ export default class MenuItem extends Component {
       }
   }
 
-  handleMenuShow() {
-    console.log(this.props.itemId);
-    this.props.handleMenuShow('test');
-  }
-
 
   render() {
     let itemModal;
 
-    // hide options
-    // if this.props.menuShowing === this.props.id => show option
-    if (this.props.menuShowing === this.props.id) {
-      itemModal = (<div className="item-modal">
+    if (this.props.itemOptionsShowing === this.props.id) {
+      itemModal = (<div className="item-options-modal">
                 <div className="item-top-row">
-
                     <div className="item-options">
 
                         {/* MilkType - Size - Quantity */}
@@ -124,6 +126,7 @@ export default class MenuItem extends Component {
                 <div className="item-other-options">
                 {this.props.options.map(this.renderOption2)}
                     <AddToOrderButton
+                        handleHideItemOptions={this.props.handleHideItemOptions}
                         handleAddItemToOrder={this.handleAddItemToOrder}
                         handleItemFormComplete={this.handleItemFormComplete}
                         toggleAddNotification={this.props.toggleAddNotification}
@@ -138,7 +141,7 @@ export default class MenuItem extends Component {
 
       return (
           <div>
-            <div onClick={this.handleMenuShow} className="drink-item">
+            <div onClick={() => {this.props.handleItemOptionsShow(this.props.id)}} className="drink-item">
 
                 <div className="item-name-wrap">
                     <div className="item-name">
@@ -162,9 +165,11 @@ MenuItem.propTypes = {
     itemName: React.PropTypes.string,
     price: React.PropTypes.number,
     options: React.PropTypes.arrayOf(React.PropTypes.string),
-    itemId: React.PropTypes.string,
+    id: React.PropTypes.string,
     key: React.PropTypes.string,
-    handleMenuShow: React.PropTypes.func,
+    itemOptionsShowing: React.PropTypes.string,
+    handleItemOptionsShow: React.PropTypes.func,
+    handleHideItemOptions: React.PropTypes.func,
     handleAddItemToOrder: React.PropTypes.func,
     calculateTotalAndTax: React.PropTypes.func,
     toggleAddNotification: React.PropTypes.func,

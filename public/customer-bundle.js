@@ -61909,7 +61909,7 @@
 				"menu": [
 					{
 						"sectionTitle": "Hot Drinks",
-						"slug": "hot-drinks",
+						"id": "hot-drinks",
 						"items": [
 							{
 								"name": "Latte",
@@ -61969,7 +61969,7 @@
 					},
 					{
 						"sectionTitle": "Cold Drinks",
-						"slug": "cold-drinks",
+						"id": "cold-drinks",
 						"items": [
 							{
 								"name": "Iced Latte",
@@ -62030,7 +62030,7 @@
 					},
 					{
 						"sectionTitle": "Tea",
-						"slug": "tea",
+						"id": "tea",
 						"items": [
 							{
 								"name": "Green",
@@ -62086,7 +62086,7 @@
 					},
 					{
 						"sectionTitle": "Bakery",
-						"slug": "bakery",
+						"id": "bakery",
 						"items": [
 							{
 								"name": "Croissant",
@@ -62140,7 +62140,7 @@
 				"menu": [
 					{
 						"displayName": "Hot Drinks",
-						"slug": "hot-drinks",
+						"id": "hot-drinks",
 						"items": [
 							{
 								"name": "Latte",
@@ -66189,19 +66189,29 @@
 	    var _this = _possibleConstructorReturn(this, (MenuFormContainer.__proto__ || Object.getPrototypeOf(MenuFormContainer)).call(this, props));
 
 	    _this.state = {
-	      menuShowing: ''
+	      menuShowing: '',
+	      itemOptionsShowing: ''
 	    };
 
 	    _this.handleMenuShow = _this.handleMenuShow.bind(_this);
+	    _this.handleItemOptionsShow = _this.handleItemOptionsShow.bind(_this);
 	    _this.handleBackButton = _this.handleBackButton.bind(_this);
+	    _this.handleHideItemOptions = _this.handleHideItemOptions.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(MenuFormContainer, [{
 	    key: 'handleMenuShow',
-	    value: function handleMenuShow(menuSection) {
+	    value: function handleMenuShow(id) {
 	      this.setState({
-	        menuShowing: menuSection
+	        menuShowing: id
+	      });
+	    }
+	  }, {
+	    key: 'handleItemOptionsShow',
+	    value: function handleItemOptionsShow(id) {
+	      this.setState({
+	        itemOptionsShowing: id
 	      });
 	    }
 	  }, {
@@ -66212,6 +66222,13 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleHideItemOptions',
+	    value: function handleHideItemOptions() {
+	      this.setState({
+	        itemOptionsShowing: ''
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -66219,10 +66236,13 @@
 	      var menuSections = this.props.data.shops[0].menu.map(function (menuSection) {
 	        return _react2.default.createElement(_MenuSection2.default, {
 	          menuSection: menuSection,
-	          slug: menuSection.slug,
-	          key: menuSection.slug,
+	          id: menuSection.id,
+	          key: menuSection.id,
 	          menuShowing: _this2.state.menuShowing,
+	          itemOptionsShowing: _this2.state.itemOptionsShowing,
 	          handleMenuShow: _this2.handleMenuShow,
+	          handleItemOptionsShow: _this2.handleItemOptionsShow,
+	          handleHideItemOptions: _this2.handleHideItemOptions,
 	          handleAddItemToOrder: _this2.props.handleAddItemToOrder,
 	          toggleAddNotification: _this2.props.toggleAddNotification,
 	          toggleErrorNotification: _this2.props.toggleErrorNotification });
@@ -66305,23 +66325,24 @@
 	      var sectionTitle = void 0;
 
 	      if (this.props.menuShowing) {
-	        if (this.props.menuShowing === this.props.slug) {
+	        if (this.props.menuShowing === this.props.id) {
 	          sectionTitle = menuSection.sectionTitle;
 	        }
 	      } else {
 	        sectionTitle = menuSection.sectionTitle;
 	      }
 
-	      if (this.props.menuShowing === this.props.slug) {
+	      if (this.props.menuShowing === this.props.id) {
 	        menuItems = menuSection.items.map(function (item, index) {
 	          return _react2.default.createElement(_MenuItem2.default, {
 	            itemName: item.name,
 	            price: item.price,
 	            options: item.options,
-	            itemId: item.id,
+	            id: item.id,
 	            key: item.id,
-	            menuShowing: _this2.props.menuShowing,
-	            handleMenuShow: _this2.props.handleMenuShow,
+	            itemOptionsShowing: _this2.props.itemOptionsShowing,
+	            handleItemOptionsShow: _this2.props.handleItemOptionsShow,
+	            handleHideItemOptions: _this2.props.handleHideItemOptions,
 	            handleAddItemToOrder: _this2.props.handleAddItemToOrder,
 	            calculateTotalAndTax: _this2.props.calculateTotalAndTax,
 	            toggleAddNotification: _this2.props.toggleAddNotification,
@@ -66332,7 +66353,7 @@
 	      return _react2.default.createElement(
 	        'section',
 	        { onClick: function onClick() {
-	            _this2.props.handleMenuShow(_this2.props.slug);
+	            _this2.props.handleMenuShow(_this2.props.id);
 	          }, className: 'menu-section' },
 	        _react2.default.createElement(
 	          'h2',
@@ -66356,9 +66377,12 @@
 
 	MenuSection.propTypes = {
 	  menuSection: _react2.default.PropTypes.object,
-	  slug: _react2.default.PropTypes.string,
+	  id: _react2.default.PropTypes.string,
 	  menuShowing: _react2.default.PropTypes.string,
+	  itemOptionsShowing: _react2.default.PropTypes.string,
 	  handleMenuShow: _react2.default.PropTypes.func,
+	  handleItemOptionsShow: _react2.default.PropTypes.func,
+	  handleHideItemOptions: _react2.default.PropTypes.func,
 	  handleAddItemToOrder: _react2.default.PropTypes.func,
 	  toggleAddNotification: _react2.default.PropTypes.func,
 	  toggleErrorNotification: _react2.default.PropTypes.func
@@ -66422,7 +66446,17 @@
 
 	        var _this = _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this, props));
 
-	        _this.handleMenuShow = _this.handleMenuShow.bind(_this);
+	        _this.state = {};
+
+	        _this.checkFormComplete = _this.checkFormComplete.bind(_this);
+	        _this.handleMilkTypeChange = _this.handleMilkTypeChange.bind(_this);
+	        _this.handleSizeChange = _this.handleSizeChange.bind(_this);
+	        _this.handleQuantityChange = _this.handleQuantityChange.bind(_this);
+	        _this.handleDecafChange = _this.handleDecafChange.bind(_this);
+	        _this.handleHotOrColdChange = _this.handleHotOrColdChange.bind(_this);
+	        _this.handleAddItemToOrder = _this.handleAddItemToOrder.bind(_this);
+	        _this.renderOption = _this.renderOption.bind(_this);
+	        _this.renderOption2 = _this.renderOption2.bind(_this);
 	        return _this;
 	    }
 
@@ -66478,7 +66512,7 @@
 	        key: 'handleAddItemToOrder',
 	        value: function handleAddItemToOrder(itemDetails) {
 	            this.props.handleAddItemToOrder(itemDetails);
-	            this.replaceState({});
+	            this.setState({});
 	        }
 	    }, {
 	        key: 'renderOption',
@@ -66518,22 +66552,16 @@
 	            }
 	        }
 	    }, {
-	        key: 'handleMenuShow',
-	        value: function handleMenuShow() {
-	            console.log(this.props.itemId);
-	            this.props.handleMenuShow('test');
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var itemModal = void 0;
 
-	            // hide options
-	            // if this.props.menuShowing === this.props.id => show option
-	            if (this.props.menuShowing === this.props.id) {
+	            if (this.props.itemOptionsShowing === this.props.id) {
 	                itemModal = _react2.default.createElement(
 	                    'div',
-	                    { className: 'item-modal' },
+	                    { className: 'item-options-modal' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'item-top-row' },
@@ -66548,6 +66576,7 @@
 	                        { className: 'item-other-options' },
 	                        this.props.options.map(this.renderOption2),
 	                        _react2.default.createElement(_AddToOrderButton2.default, {
+	                            handleHideItemOptions: this.props.handleHideItemOptions,
 	                            handleAddItemToOrder: this.handleAddItemToOrder,
 	                            handleItemFormComplete: this.handleItemFormComplete,
 	                            toggleAddNotification: this.props.toggleAddNotification,
@@ -66565,7 +66594,9 @@
 	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { onClick: this.handleMenuShow, className: 'drink-item' },
+	                    { onClick: function onClick() {
+	                            _this2.props.handleItemOptionsShow(_this2.props.id);
+	                        }, className: 'drink-item' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'item-name-wrap' },
@@ -66605,9 +66636,11 @@
 	    itemName: _react2.default.PropTypes.string,
 	    price: _react2.default.PropTypes.number,
 	    options: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string),
-	    itemId: _react2.default.PropTypes.string,
+	    id: _react2.default.PropTypes.string,
 	    key: _react2.default.PropTypes.string,
-	    handleMenuShow: _react2.default.PropTypes.func,
+	    itemOptionsShowing: _react2.default.PropTypes.string,
+	    handleItemOptionsShow: _react2.default.PropTypes.func,
+	    handleHideItemOptions: _react2.default.PropTypes.func,
 	    handleAddItemToOrder: _react2.default.PropTypes.func,
 	    calculateTotalAndTax: _react2.default.PropTypes.func,
 	    toggleAddNotification: _react2.default.PropTypes.func,
@@ -66639,6 +66672,7 @@
 
 
 	    propTypes: {
+	        handleHideItemOptions: _react2.default.PropTypes.func,
 	        handleAddItemToOrder: _react2.default.PropTypes.func,
 	        handleItemFormComplete: _react2.default.PropTypes.func,
 	        toggleAddNotification: _react2.default.PropTypes.func,
@@ -66668,6 +66702,7 @@
 	                    onClick: function onClick() {
 	                        _this.props.handleAddItemToOrder(itemDetails);
 	                        _this.props.toggleAddNotification();
+	                        _this.props.handleHideItemOptions();
 	                    } },
 	                'Add to order'
 	            ) : _react2.default.createElement(
@@ -67045,7 +67080,7 @@
 
 
 	// module
-	exports.push([module.id, ".drink-item {\n  overflow: hidden;\n  margin-bottom: 1.2em;\n  border: 1px solid #E4E4E4;\n  background: #fff;\n  padding: 0.5em 0em 0.5em 0em;\n  border-radius: 3px;\n  box-shadow: #999999 0px 1px; }\n  .drink-item select {\n    margin-right: 0.5em; }\n\n.item-top-row {\n  margin-bottom: 0.75em;\n  width: 100%;\n  display: inline-block; }\n\n.item-name-wrap {\n  margin-right: 0.5em;\n  display: inline-block;\n  font-size: 1.2em;\n  width: 100%;\n  padding-bottom: 0.25em;\n  margin-bottom: 0.5em;\n  border-bottom: 1px solid #E4E4E4;\n  padding-left: 0.5em;\n  padding-right: 0.5em; }\n  .item-name-wrap .item-name {\n    float: left; }\n\n.item-options {\n  width: 82%;\n  display: inline-block;\n  padding-left: 0.5em; }\n\n.item-other-options {\n  font-size: 0.85em;\n  padding-left: 0.5em; }\n\n.item-price {\n  display: inline-block;\n  width: 5%;\n  font-size: 1em;\n  padding-right: 0.75em;\n  padding-top: 5px; }\n", ""]);
+	exports.push([module.id, ".drink-item {\n  overflow: hidden;\n  margin-bottom: 1.2em;\n  border: 1px solid #E4E4E4;\n  background: #fff;\n  padding: 0.5em 0em 0.5em 0em;\n  border-radius: 3px;\n  box-shadow: #999999 0px 1px; }\n  .drink-item select {\n    margin-right: 0.5em; }\n\n.item-options-modal {\n  position: absolute;\n  top: 64px;\n  left: 0;\n  background: #ffffff;\n  width: 100%;\n  height: 100%; }\n  .item-options-modal .item-top-row {\n    margin-bottom: 0.75em;\n    width: 100%;\n    display: inline-block; }\n  .item-options-modal .item-options {\n    width: 82%;\n    display: inline-block;\n    padding-left: 0.5em; }\n  .item-options-modal .item-other-options {\n    font-size: 0.85em;\n    padding-left: 0.5em; }\n\n.item-name-wrap {\n  margin-right: 0.5em;\n  display: inline-block;\n  font-size: 1.2em;\n  width: 100%;\n  padding-bottom: 0.25em;\n  margin-bottom: 0.5em;\n  border-bottom: 1px solid #E4E4E4;\n  padding-left: 0.5em;\n  padding-right: 0.5em; }\n  .item-name-wrap .item-name {\n    float: left; }\n\n.item-price {\n  display: inline-block;\n  width: 5%;\n  font-size: 1em;\n  padding-right: 0.75em;\n  padding-top: 5px; }\n", ""]);
 
 	// exports
 

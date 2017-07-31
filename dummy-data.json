@@ -8,7 +8,7 @@
             "menu": [
                 {
                     "sectionTitle": "Hot Drinks",
-                    "slug": "hot-drinks",
+                    "id": "hot-drinks",
                     "items": [
                         {
                             "name": "Latte",
@@ -45,7 +45,7 @@
 
                 {
                     "sectionTitle": "Cold Drinks",
-                    "slug": "cold-drinks",
+                    "id": "cold-drinks",
                     "items": [
                         {
                             "name": "Iced Latte",
@@ -82,7 +82,7 @@
 
                 {
                     "sectionTitle": "Tea",
-                    "slug": "tea",
+                    "id": "tea",
                     "items": [
                         {
                             "name": "Green",
@@ -119,7 +119,7 @@
 
                 {
                     "sectionTitle": "Bakery",
-                    "slug": "bakery",
+                    "id": "bakery",
                     "items": [
                         {
                             "name": "Croissant",
@@ -163,7 +163,7 @@
             "menu": [
                 {
                     "displayName": "Hot Drinks",
-                    "slug": "hot-drinks",
+                    "id": "hot-drinks",
                     "items": [
                         {
                             "name": "Latte",

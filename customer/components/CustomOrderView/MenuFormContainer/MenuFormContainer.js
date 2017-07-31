@@ -8,16 +8,25 @@ export default class MenuFormContainer extends Component {
     super(props);
 
     this.state = {
-      menuShowing: ''
+      menuShowing: '',
+      itemOptionsShowing: ''
     };
 
     this.handleMenuShow = this.handleMenuShow.bind(this);
+    this.handleItemOptionsShow = this.handleItemOptionsShow.bind(this);
     this.handleBackButton = this.handleBackButton.bind(this);
+    this.handleHideItemOptions = this.handleHideItemOptions.bind(this);
   }
 
-  handleMenuShow(menuSection) {
+  handleMenuShow(id) {
     this.setState({
-      menuShowing: menuSection
+      menuShowing: id
+    });
+  }
+
+  handleItemOptionsShow(id) {
+    this.setState({
+      itemOptionsShowing: id
     });
   }
 
@@ -27,16 +36,25 @@ export default class MenuFormContainer extends Component {
     });
   }
 
+  handleHideItemOptions() {
+    this.setState({
+      itemOptionsShowing: ''
+    });
+  }
+
   render() {
 
     const menuSections = this.props.data.shops[0].menu.map((menuSection) => {
       return (
         <MenuSection
           menuSection={menuSection}
-          slug={menuSection.slug}
-          key={menuSection.slug}
+          id={menuSection.id}
+          key={menuSection.id}
           menuShowing={this.state.menuShowing}
+          itemOptionsShowing={this.state.itemOptionsShowing}
           handleMenuShow={this.handleMenuShow}
+          handleItemOptionsShow={this.handleItemOptionsShow}
+          handleHideItemOptions={this.handleHideItemOptions}
           handleAddItemToOrder={this.props.handleAddItemToOrder}
           toggleAddNotification={this.props.toggleAddNotification}
           toggleErrorNotification={this.props.toggleErrorNotification} />

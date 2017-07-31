@@ -11,24 +11,25 @@ export default class MenuSection extends Component {
       let sectionTitle;
 
       if (this.props.menuShowing) {
-        if (this.props.menuShowing === this.props.slug) {
+        if (this.props.menuShowing === this.props.id) {
           sectionTitle = menuSection.sectionTitle;
         }
       } else {
         sectionTitle = menuSection.sectionTitle;
       }
 
-      if (this.props.menuShowing === this.props.slug) {
+      if (this.props.menuShowing === this.props.id) {
         menuItems = menuSection.items.map((item, index) => {
           return (
             <MenuItem
               itemName={item.name}
               price={item.price}
               options={item.options}
-              itemId={item.id}
+              id={item.id}
               key={item.id}
-              menuShowing={this.props.menuShowing}
-              handleMenuShow={this.props.handleMenuShow}
+              itemOptionsShowing={this.props.itemOptionsShowing}
+              handleItemOptionsShow={this.props.handleItemOptionsShow}
+              handleHideItemOptions={this.props.handleHideItemOptions}
               handleAddItemToOrder={this.props.handleAddItemToOrder}
               calculateTotalAndTax={this.props.calculateTotalAndTax}
               toggleAddNotification={this.props.toggleAddNotification}
@@ -38,7 +39,7 @@ export default class MenuSection extends Component {
       }
 
         return (
-            <section onClick={() => {this.props.handleMenuShow(this.props.slug)}} className="menu-section">
+            <section onClick={() => {this.props.handleMenuShow(this.props.id)}} className="menu-section">
                 <h2>
                   {sectionTitle}
                 </h2>
@@ -52,9 +53,12 @@ export default class MenuSection extends Component {
 
 MenuSection.propTypes = {
     menuSection: React.PropTypes.object,
-    slug: React.PropTypes.string,
+    id: React.PropTypes.string,
     menuShowing: React.PropTypes.string,
+    itemOptionsShowing: React.PropTypes.string,
     handleMenuShow: React.PropTypes.func,
+    handleItemOptionsShow: React.PropTypes.func,
+    handleHideItemOptions: React.PropTypes.func,
     handleAddItemToOrder: React.PropTypes.func,
     toggleAddNotification: React.PropTypes.func,
     toggleErrorNotification: React.PropTypes.func

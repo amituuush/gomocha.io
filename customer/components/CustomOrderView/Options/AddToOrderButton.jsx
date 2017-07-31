@@ -5,6 +5,7 @@ import sass from './options.scss'
 var AddToOrderButton = React.createClass({
 
     propTypes: {
+        handleHideItemOptions: React.PropTypes.func,
         handleAddItemToOrder: React.PropTypes.func,
         handleItemFormComplete: React.PropTypes.func,
         toggleAddNotification: React.PropTypes.func,
@@ -28,8 +29,9 @@ var AddToOrderButton = React.createClass({
                 {this.props.checkFormComplete() ?
                     <div className='add-to-order'
                          onClick={() => {
-                             this.props.handleAddItemToOrder(itemDetails)
-                             this.props.toggleAddNotification()
+                             this.props.handleAddItemToOrder(itemDetails);
+                             this.props.toggleAddNotification();
+                             this.props.handleHideItemOptions();
                          }}>
                         Add to order
                     </div>
