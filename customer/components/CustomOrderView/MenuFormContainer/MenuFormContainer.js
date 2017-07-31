@@ -24,7 +24,7 @@ export default class MenuFormContainer extends Component {
   handleBackButton() {
     this.setState({
       menuShowing: ''
-    })
+    });
   }
 
   render() {

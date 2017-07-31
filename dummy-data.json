@@ -69,7 +69,7 @@
                             "name": "Iced Coffee",
                             "price": 2.50,
                             "options": ["milkType", "size", "quantity", "decaf"],
-                            "id": ""
+                            "id": "iced-coffee"
                         },
                         {
                             "name": "Frappe",

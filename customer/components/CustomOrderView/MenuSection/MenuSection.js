@@ -25,8 +25,10 @@ export default class MenuSection extends Component {
               itemName={item.name}
               price={item.price}
               options={item.options}
-              id={item.id}
+              itemId={item.id}
               key={item.id}
+              menuShowing={this.props.menuShowing}
+              handleMenuShow={this.props.handleMenuShow}
               handleAddItemToOrder={this.props.handleAddItemToOrder}
               calculateTotalAndTax={this.props.calculateTotalAndTax}
               toggleAddNotification={this.props.toggleAddNotification}
@@ -56,4 +58,4 @@ MenuSection.propTypes = {
     handleAddItemToOrder: React.PropTypes.func,
     toggleAddNotification: React.PropTypes.func,
     toggleErrorNotification: React.PropTypes.func
-}
+};
