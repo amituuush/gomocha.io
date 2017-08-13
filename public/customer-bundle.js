@@ -66123,7 +66123,8 @@
 	                    _react2.default.createElement(_OrderTotal2.default, {
 	                        orderItems: this.props.items,
 	                        handleDeleteItemFromOrder: this.props.handleDeleteItemFromOrder,
-	                        toggleDeleteNotification: this.props.toggleDeleteNotification }),
+	                        toggleDeleteNotification: this.props.toggleDeleteNotification,
+	                        handleShoppingCartToggle: this.props.handleShoppingCartToggle }),
 	                    _react2.default.createElement(_SpecialInstructions2.default, {
 	                        handleSpecialInstructions: this.props.handleSpecialInstructions }),
 	                    nextButton
@@ -67200,7 +67201,8 @@
 	    propTypes: {
 	        orderItems: _react2.default.PropTypes.array,
 	        handleDeleteItemFromOrder: _react2.default.PropTypes.func,
-	        toggleDeleteNotification: _react2.default.PropTypes.func
+	        toggleDeleteNotification: _react2.default.PropTypes.func,
+	        handleShoppingCartToggle: _react2.default.PropTypes.func
 	    },
 
 	    render: function render() {
@@ -67228,6 +67230,7 @@
 	            _react2.default.createElement(
 	                'section',
 	                { id: 'order-total' },
+	                _react2.default.createElement('i', { onClick: this.props.handleShoppingCartToggle, className: 'fa fa-times', 'aria-hidden': 'true' }),
 	                _react2.default.createElement(
 	                    'h2',
 	                    null,
@@ -67569,7 +67572,7 @@
 
 
 	// module
-	exports.push([module.id, "#order-total {\n  box-shadow: #999999 0px 1px; }\n  #order-total h2 {\n    text-align: left; }\n\n.next-button-container {\n  width: 28em;\n  margin: 2em auto 2em auto; }\n\n.order-total-table {\n  margin: 0 auto;\n  width: 100%;\n  border: 1px solid #E4E4E4;\n  background: #fff;\n  border-collapse: collapse; }\n\n@media only screen and (min-width: 600px) {\n  #order-total {\n    max-width: 28em;\n    margin: 0 auto; } }\n", ""]);
+	exports.push([module.id, "#order-total {\n  box-shadow: #999999 0px 1px; }\n  #order-total h2 {\n    text-align: left; }\n  #order-total .fa-times {\n    float: left; }\n    #order-total .fa-times:hover {\n      cursor: pointer; }\n\n.next-button-container {\n  width: 28em;\n  margin: 2em auto 2em auto; }\n\n.order-total-table {\n  margin: 0 auto;\n  width: 100%;\n  border: 1px solid #E4E4E4;\n  background: #fff;\n  border-collapse: collapse; }\n\n@media only screen and (min-width: 600px) {\n  #order-total {\n    max-width: 28em;\n    margin: 0 auto; } }\n", ""]);
 
 	// exports
 

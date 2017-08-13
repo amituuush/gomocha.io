@@ -1,3 +1,4 @@
+
 import React from 'react'
 import OrderTotalRow from '../OrderTotalRow/OrderTotalRow'
 import OrderTax from '../OrderTax/OrderTax'
@@ -9,7 +10,8 @@ var OrderTotal = React.createClass({
     propTypes: {
         orderItems: React.PropTypes.array,
         handleDeleteItemFromOrder: React.PropTypes.func,
-        toggleDeleteNotification: React.PropTypes.func
+        toggleDeleteNotification: React.PropTypes.func,
+        handleShoppingCartToggle: React.PropTypes.func
     },
 
     render: function() {
@@ -37,6 +39,7 @@ var OrderTotal = React.createClass({
         return (
             <div>
                 <section id="order-total">
+                    <i onClick={this.props.handleShoppingCartToggle} className="fa fa-times" aria-hidden="true"></i>
                     <h2>Order Total</h2>
                     <table className="order-total-table">
                         <tbody>

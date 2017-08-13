@@ -70,7 +70,8 @@ var CustomOrderView = React.createClass({
                          <OrderTotal
                              orderItems={this.props.items}
                              handleDeleteItemFromOrder={this.props.handleDeleteItemFromOrder}
-                             toggleDeleteNotification={this.props.toggleDeleteNotification} />
+                             toggleDeleteNotification={this.props.toggleDeleteNotification}
+                             handleShoppingCartToggle={this.props.handleShoppingCartToggle} />
                              <SpecialInstructions
                                 handleSpecialInstructions={this.props.handleSpecialInstructions} />
                             {nextButton}
